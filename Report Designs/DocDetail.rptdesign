@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.8.0.v201905290745</property>
+    <property name="units">in</property>
+    <method name="clientInitialize"><![CDATA[//this.getViewer().disableIV();]]></method>
+    <property name="theme">ThemesReportItems31.Modern</property>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="layoutPreference">auto layout</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <list-property name="libraries">
+        <structure>
+            <property name="fileName">/ThemesReportItems31.rptlibrary</property>
+            <property name="namespace">ThemesReportItems31</property>
+        </structure>
+        <structure>
+            <property name="fileName">Report Libraries/DataRisk Analytics Library.rptlibrary</property>
+            <property name="namespace">DataRisk Analytics Library</property>
+        </structure>
+    </list-property>
+    <method name="onContentUpdate"><![CDATA[
+var uiOptions = this.getViewer().getUIOptions();
+    uiOptions.enableToolBar(false);
+    this.getViewer().setUIOptions(uiOptions);
+   ]]></method>
+    <parameters>
+        <scalar-parameter name="DeviceName" id="3720">
+            <property name="hidden">false</property>
+            <property name="valueType">static</property>
+            <property name="isRequired">false</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant"></value>
+            </simple-property-list>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="UserName" id="3721">
+            <property name="hidden">false</property>
+            <property name="valueType">static</property>
+            <property name="isRequired">false</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant"></value>
+            </simple-property-list>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="FileName" id="3719">
+            <property name="hidden">false</property>
+            <property name="valueType">static</property>
+            <property name="isRequired">false</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant"></value>
+            </simple-property-list>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="RiskLevel" id="3722">
+            <property name="hidden">false</property>
+            <property name="valueType">static</property>
+            <property name="isRequired">false</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant"></value>
+            </simple-property-list>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="Cart" id="3723">
+            <property name="hidden">false</property>
+            <property name="valueType">static</property>
+            <property name="isRequired">false</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant"></value>
+            </simple-property-list>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+    </parameters>
+    <data-sources>
+        <data-mart-data-source name="Data Source" id="3724">
+            <property name="datamartURL">Data Objects/DataRisk Analytics</property>
+            <property name="accessType">latest</property>
+        </data-mart-data-source>
+    </data-sources>
+    <property name="linkedDataModels">
+        <data-mart-linked-data-model name="dmFinalDoc" id="4075">
+            <property name="dataSource">Data Source</property>
+            <property name="dataObject">dmFinalDoc</property>
+        </data-mart-linked-data-model>
+    </property>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <property name="orientation">auto</property>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <table id="4100">
+            <list-property name="userProperties">
+                <structure>
+                    <property name="name">__ac_group_collapse_level</property>
+                    <property name="type">string</property>
+                </structure>
+            </list-property>
+            <property name="fontFamily">"Calibri"</property>
+            <property name="fontSize">11pt</property>
+            <property name="theme">DataRisk Analytics Library.Table-DataRiskTheme</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">Username</property>
+                    <text-property name="displayName">Username</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["Username"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">Device Name</property>
+                    <text-property name="displayName">Device Name</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["Device Name"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">name</property>
+                    <text-property name="displayName">Document Name</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["name"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">cartridge</property>
+                    <text-property name="displayName">cartridge</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["cartridge"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">sumcartridge</property>
+                    <text-property name="displayName">sumcartridge</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["sumcartridge"]</expression>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="name">sumriskscore</property>
+                    <text-property name="displayName">sumriskscore</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["sumriskscore"]</expression>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="name">maxrisklevel</property>
+                    <text-property name="displayName">maxrisklevel</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["maxrisklevel"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">doc_id</property>
+                    <text-property name="displayName">Internal Document ID</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["doc_id"]</expression>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="name">runsl</property>
+                    <property name="dataType">integer</property>
+                    <simple-property-list name="aggregateOn">
+                        <value>NewTableGroup1</value>
+                    </simple-property-list>
+                    <property name="aggregateFunction">RUNNINGCOUNT</property>
+                    <list-property name="arguments">
+                        <structure>
+                            <property name="name">Expression</property>
+                            <expression name="value" type="javascript">row["doc_id"]</expression>
+                        </structure>
+                    </list-property>
+                    <property name="allowExport">true</property>
+                </structure>
+            </list-property>
+            <property name="linkedDataModel">dmFinalDoc</property>
+            <list-property name="filter">
+                <structure>
+                    <property name="operator">eq</property>
+                    <expression name="expr" type="javascript">if(params["DeviceName"].value!=null &amp;&amp; params["DeviceName"].value!='')&#13;
+params["DeviceName"].value&#13;
+else&#13;
+1;</expression>
+                    <simple-property-list name="value1">
+                        <value type="javascript">if(params["DeviceName"].value!=null &amp;&amp; params["DeviceName"].value!='')&#13;
+row["Device Name"]&#13;
+else&#13;
+1;</value>
+                    </simple-property-list>
+                    <property name="updateAggregation">true</property>
+                </structure>
+                <structure>
+                    <property name="operator">eq</property>
+                    <expression name="expr" type="javascript">if(params["UserName"].value!=null &amp;&amp; params["UserName"].value!='')&#13;
+params["UserName"].value&#13;
+else&#13;
+1;</expression>
+                    <simple-property-list name="value1">
+                        <value type="javascript">if(params["UserName"].value!=null &amp;&amp; params["UserName"].value!='')&#13;
+row["Username"]&#13;
+else&#13;
+1;</value>
+                    </simple-property-list>
+                    <property name="updateAggregation">true</property>
+                </structure>
+                <structure>
+                    <property name="operator">eq</property>
+                    <expression name="expr" type="javascript">if(params["FileName"].value!=null &amp;&amp; params["FileName"].value!='')&#13;
+params["FileName"].value&#13;
+else&#13;
+1;</expression>
+                    <simple-property-list name="value1">
+                        <value type="javascript">if(params["FileName"].value!=null &amp;&amp; params["FileName"].value!='')&#13;
+row["name"]&#13;
+else&#13;
+1;</value>
+                    </simple-property-list>
+                    <property name="updateAggregation">true</property>
+                </structure>
+                <structure>
+                    <property name="operator">eq</property>
+                    <expression name="expr" type="javascript">if(params["RiskLevel"].value!=null &amp;&amp; params["RiskLevel"].value!='')&#13;
+params["RiskLevel"].value&#13;
+else&#13;
+1;</expression>
+                    <simple-property-list name="value1">
+                        <value type="javascript">if(params["RiskLevel"].value!=null &amp;&amp; params["RiskLevel"].value!='')&#13;
+row["maxrisklevel"]&#13;
+else&#13;
+1;</value>
+                    </simple-property-list>
+                    <property name="updateAggregation">true</property>
+                </structure>
+                <structure>
+                    <property name="operator">eq</property>
+                    <expression name="expr" type="javascript">if(params["Cart"].value!=null &amp;&amp; params["Cart"].value!='')&#13;
+params["Cart"].value&#13;
+else&#13;
+1;</expression>
+                    <simple-property-list name="value1">
+                        <value type="javascript">if(params["Cart"].value!=null &amp;&amp; params["Cart"].value!='')&#13;
+row["cartridge"]&#13;
+else&#13;
+1;</value>
+                    </simple-property-list>
+                    <property name="updateAggregation">true</property>
+                </structure>
+            </list-property>
+            <column id="4141">
+                <property name="width">2in</property>
+            </column>
+            <column id="4143">
+                <property name="width">1in</property>
+            </column>
+            <column id="4144">
+                <property name="width">1in</property>
+            </column>
+            <column id="4145">
+                <property name="width">1in</property>
+            </column>
+            <header>
+                <row id="4101">
+                    <cell id="4106">
+                        <label id="4107">
+                            <property name="fontSize">11pt</property>
+                            <property name="paddingLeft">2pt</property>
+                            <property name="textAlign">left</property>
+                            <text-property name="text">Document Name</text-property>
+                        </label>
+                        <text name="NewText" id="712">
+                            <property name="contentType">html</property>
+                            <text-property name="content"><![CDATA[<script>
+function filterBy(docID) {
+
+$("#popupDetail").show();
+
+myHTML = $("#popupDetail").html();
+//alert(window.location.href.indexOf ("apps"));
+isEnterprise = false;
+if (window.location.href.indexOf ("apps") > 0) isEnterprise = true;
+
+if ( isEnterprise ) 
+{
+   $("#popupDetail").html(myHTML + "<iframe frameBorder=0 scrolling=yes width=900px height=450px src='/iportal/executereport.do?__locale=en_US&amp;__userenv=null&amp;__vp=Default%20Volume&amp;volume=Default%20Volume&amp;closex=true&amp;__executableName=%2FApplications%2FEnCase%20Data%20Risk%2FReport%20Designs%2FDocumentDetail.rptdesign&amp;__requesttype=immediate&amp;invokesubmit=true&amp;__format=HTML&amp;DocumentID="+docID+"'></iframe>"); 
+}
+else {     // 'Workgroup' in the Designer
+   $("#popupDetail").html(myHTML + "<iframe frameBorder=0 scrolling=yes width=900px height=450px src='/iportal/frameset?__report=C%3a%2fUsers%2favishakc%2fworkspace%2fEnCase%20Data%20Risk%2fDashboards%2f%2e%2e%2fReport%20Designs%2fDocumentDetail%2erptdesign&amp;amp;invokesubmit=true&amp;amp;__requesttype=immediate&amp;amp;&amp;amp;invokesubmit=true&amp;amp;__requesttype=immediate&amp;amp;__format=HTML&amp;amp;DocumentID="+docID+"'></iframe>");
+}
+
+
+$("#popupDetail").fadeIn('slow');
+
+}
+
+</script>]]></text-property>
+                        </text>
+                    </cell>
+                    <cell id="4110">
+                        <label id="4111">
+                            <property name="fontSize">11pt</property>
+                            <property name="paddingLeft">2pt</property>
+                            <property name="textAlign">left</property>
+                            <text-property name="text">Risk Level</text-property>
+                        </label>
+                    </cell>
+                    <cell id="4112">
+                        <label id="4113">
+                            <property name="fontSize">11pt</property>
+                            <property name="paddingRight">2pt</property>
+                            <property name="textAlign">right</property>
+                            <text-property name="text">Risk Score</text-property>
+                        </label>
+                    </cell>
+                    <cell id="4114">
+                        <label id="4115">
+                            <property name="fontSize">11pt</property>
+                            <property name="paddingRight">2pt</property>
+                            <property name="textAlign">right</property>
+                            <text-property name="text">PI Count</text-property>
+                        </label>
+                    </cell>
+                </row>
+            </header>
+            <group id="4147">
+                <property name="groupName">NewTableGroup1</property>
+                <expression name="keyExpr" type="javascript">row["doc_id"]</expression>
+                <property name="hideDetail">false</property>
+                <header>
+                    <row id="4148">
+                        <list-property name="visibility">
+                            <structure>
+                                <property name="format">all</property>
+                                <expression name="valueExpr" type="javascript">true</expression>
+                            </structure>
+                        </list-property>
+                        <cell id="4149">
+                            <data id="4158">
+                                <list-property name="visibility">
+                                    <structure>
+                                        <property name="format">all</property>
+                                        <expression name="valueExpr" type="javascript">true</expression>
+                                    </structure>
+                                </list-property>
+                                <property name="resultSetColumn">doc_id</property>
+                            </data>
+                        </cell>
+                        <cell id="4150"/>
+                        <cell id="4151"/>
+                        <cell id="4152"/>
+                    </row>
+                </header>
+                <footer>
+                    <row id="4153">
+                        <cell id="4154"/>
+                        <cell id="4155"/>
+                        <cell id="4156"/>
+                        <cell id="4157"/>
+                    </row>
+                </footer>
+            </group>
+            <detail>
+                <row id="4116">
+                    <list-property name="visibility">
+                        <structure>
+                            <property name="format">all</property>
+                            <expression name="valueExpr" type="javascript">if(row["runsl"]>1)&#13;
+true</expression>
+                        </structure>
+                    </list-property>
+                    <cell id="4121">
+                        <data id="4122">
+                            <property name="paddingLeft">2pt</property>
+                            <list-property name="visibility">
+                                <structure>
+                                    <property name="format">all</property>
+                                    <expression name="valueExpr" type="javascript">true</expression>
+                                </structure>
+                            </list-property>
+                            <property name="resultSetColumn">name</property>
+                        </data>
+                        <text name="NewText1" id="761">
+                            <property name="fontFamily">"Calibri"</property>
+                            <property name="fontSize">9pt</property>
+                            <property name="fontWeight">normal</property>
+                            <property name="color">#004080</property>
+                            <property name="paddingTop">2pt</property>
+                            <property name="paddingLeft">2pt</property>
+                            <property name="paddingBottom">2pt</property>
+                            <property name="paddingRight">2pt</property>
+                            <property name="textAlign">left</property>
+                            <property name="contentType">html</property>
+                            <text-property name="content"><![CDATA[<a style="cursor:pointer;" href=""  onclick="javascript:filterBy('<VALUE-OF>row["doc_id"]</VALUE-OF>');"> <VALUE-OF>row["name"]</VALUE-OF> </a>]]></text-property>
+                        </text>
+                    </cell>
+                    <cell id="4125">
+                        <data id="4130">
+                            <property name="paddingLeft">2pt</property>
+                            <property name="resultSetColumn">maxrisklevel</property>
+                        </data>
+                    </cell>
+                    <cell id="4127">
+                        <data id="4128">
+                            <property name="paddingLeft">2pt</property>
+                            <property name="paddingRight">2pt</property>
+                            <property name="textAlign">right</property>
+                            <property name="resultSetColumn">sumriskscore</property>
+                        </data>
+                    </cell>
+                    <cell id="4129">
+                        <data id="4126">
+                            <property name="paddingLeft">2pt</property>
+                            <property name="paddingRight">2pt</property>
+                            <property name="textAlign">right</property>
+                            <property name="resultSetColumn">sumcartridge</property>
+                        </data>
+                    </cell>
+                </row>
+            </detail>
+            <footer>
+                <row id="4131">
+                    <cell id="4134"/>
+                    <cell id="4136"/>
+                    <cell id="4137"/>
+                    <cell id="4138"/>
+                </row>
+            </footer>
+        </table>
+    </body>
+</report>

@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Advanced Security EnCase</title>
+
+  <!-- Bootstrap core CSS -->
+	<script src="/iportal/apps/EnCase%20Data%20Risk/EnCaseAPI/jquery/dist/jquery.min.js"></script>
+	<script src="/iportal/apps/EnCase%20Data%20Risk/EnCaseAPI/bootstrap/js/popper.min.js"></script>
+	<script src="/iportal/apps/EnCase%20Data%20Risk/EnCaseAPI/bootstrap/js/bootstrap.min.js"></script>
+  	<link href="/iportal/apps/EnCase%20Data%20Risk/EnCaseAPI/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+ 	<link href="/iportal/apps/EnCase%20Data%20Risk/EnCaseAPI/css/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+ 	
+  <!-- Custom styles for this template -->
+  	<link href="/iportal/apps/EnCase%20Data%20Risk/EnCaseAPI/css/simple-sidebar.css" rel="stylesheet" type="text/css">
+  	<link href="/iportal/apps/EnCase%20Data%20Risk/EnCaseAPI/css/style.css" rel="stylesheet" type="text/css">
+  
+  <style>
+  #pmodal{
+  margin:50px;
+  }
+  </style>
+  
+</head>
+
+<body>
+
+  <div class="d-flex" id="wrapper">
+
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+	  <div class="container" style="display:none;">
+ <button type="button" class="btn btn-primary" data-toggle="modal" id="investigationflow" data-target="#investigationModal">
+    Create Investigation
+  </button>
+
+<button type="button" class="btn btn-primary" data-toggle="modal" id="snapflow" data-target="#investigationModal">
+    Create Snashot
+  </button>
+
+
+<button type="button" class="btn btn-primary" data-toggle="modal" id="collectMemoryflow">
+    Collect Memory
+  </button>
+
+<button type="button" class="btn btn-primary" data-toggle="modal" id="collectTimelineflow">
+    Collect TimeLine
+  </button>  
+</div>
+
+
+
+ <!-- Investigation Modal -->
+  <div class="container" id="pmodal">
+	<ul class="nav nav-tabs" id="navlinks">
+    <li class="nav-item">
+      <a class="nav-link active" id="navInvest">Investigation</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="navSnap">Snapshot</a>
+    </li>
+	<li class="nav-item">
+      <a class="nav-link" id="navData">Collect Data</a>
+    </li>
+	<li class="nav-item">
+      <a class="nav-link" id="navTime">Collect Timeline</a>
+    </li>
+	<li class="nav-item">
+      <a class="nav-link" id="navMemory">Collect Memory</a>
+    </li>
+	<li class="nav-item">
+      <a class="nav-link" id="navRemediate">Remediate</a>
+    </li>
+  </ul>
+	<div id="investigatinDiv">
+    <div class="form-group">
+      <label for="txtname">Investigation Name:</label>
+      <input type="text" class="form-control" id="txtname" placeholder="Enter Investigation Name" name="txtname" required>
+    </div>
+    <div class="form-group">
+      <label for="comment">Comment:</label>
+      <input type="text" class="form-control" id="comment" placeholder="Enter Comment" name="comment" required>
+    </div>
+	<p id="imsg" class="msg" style="display:none;color:green;">Investigation ID generated successfully.</p>
+	<button type="button" id="btnInvestigation" class="btn btn-primary">Create</button>
+	<div class="float-right">
+    <a href="http://services-uswest.skytap.com:26569/#/" target="_blank" id="investRes" class="viewresults" class="btn btn-success" style="display:none;">View Results</a>
+    <button type="button" id="investNext" class="btn btn-success nxt" style="display:none;">Next</button>
+	</div>
+	</div>
+	
+	<div id="snapshotDiv" style="display:none;">
+  <ul id="existingHosts">
+	</ul>
+	<div class="form-group">
+      <label for="existInv">Existing Investigations:</label>
+      <select class="form-control" name="existInv" id="existInv">
+	  </select>
+    </div>
+    <!--div class="form-group">
+      <label for="txttarget">Targets:</label>
+      <input type="text" class="form-control" id="txttarget" placeholder="Enter Target" name="txttarget" required>
+    </div-->
+    <div class="form-group">
+      <label for="tcomment">Comment:</label>
+      <input type="text" class="form-control" id="tcomment" placeholder="Enter Comment" name="tcomment" required>
+    </div>
+	<p id="snapmsg" class="msg" style="display:none;color:green;">Snapshot created successfully for <span id="invSelected"></span></p>
+	<button type="button" id="btnSnapshot" class="btn btn-primary">Create Snapshot</button>
+	<div class="float-right">
+      <a href="http://services-uswest.skytap.com:26569/#/" target="_blank" id="snapRes" class="viewresults" class="btn btn-success" style="display:none;">View Results</a>
+    <button type="button" id="snapNext" class="btn btn-success nxt" style="display:none;">Next</button>
+	</div>
+	</div>
+	
+  <div id="collectDataDiv" style="display:none;">
+    <ul id="existingHostsData">
+    </ul>
+	<div class="form-group">
+      <label for="existInvData">Existing Investigations:</label>
+      <select class="form-control" name="existInvData" id="existInvData">
+	  </select>
+    </div>
+    <div class="form-group">
+      <label for="dataComment">Comment:</label>
+      <input type="text" class="form-control" id="dataComment" placeholder="Enter Comment" name="dataComment" required>
+    </div>
+
+	<p id="dataMsg" style="display:none;color:green;">Collect Data Success</p>
+	<button type="button" id="btnCollectData" class="btn btn-primary">Collect Data</button>
+	<div class="float-right">
+      <a href="http://services-uswest.skytap.com:26569/#/" target="_blank" id="collectDataRes" class="viewresults" class="btn btn-success" style="display:none;">View Results</a>
+    <button type="button" id="collectDataNext" class="btn btn-success nxt" style="display:none;">Next</button>
+	</div>
+	</div>
+	
+  <div id="timelineDiv" style="display:none;">
+    <ul id="existingHostsTime">
+    </ul>
+    <div class="form-group">
+      <label for="existInvTimeline">Existing Investigations:</label>
+      <select class="form-control" name="existInvTimeline" id="existInvTimeline">
+	  </select>
+    </div>
+    <div class="form-group">
+      <label for="timeComment">Comment:</label>
+      <input type="text" class="form-control" id="timeComment" placeholder="Enter Comment" name="timeComment" required>
+    </div>
+	<p id="timemsg" class="msg" style="display:none;color:green;">Collect TimeLine Success</p>
+	<button type="button" id="btnCollectTime" class="btn btn-primary">Collect Timeline</button>
+	
+	<div class="float-right">
+      <a href="http://services-uswest.skytap.com:26569/#/" target="_blank" id="btnCollectTimeRes" class="viewresults" class="btn btn-success" style="display:none;">View Results</a>
+	  <button type="button" id="timelineNext" class="btn btn-success nxt" style="display:none;">Next</button>
+	</div>
+  </div>
+  
+  
+  <div id="memoryDiv" style="display:none;">
+    <ul id="existingHostsMemory">
+    </ul>
+    <div class="form-group">
+      <label for="existInvMemory">Existing Investigations:</label>
+      <select class="form-control" name="existInvMemory" id="existInvMemory">
+	  </select>
+    </div>
+    <div class="form-group">
+      <label for="memoryComment">Comment:</label>
+      <input type="text" class="form-control" id="memoryComment" placeholder="Enter Comment" name="timeComment" required>
+    </div>
+	<p id="memomsg" class="msg" style="display:none;color:green;">Collect Memory Success</p>
+	<button type="button" id="btnCollectMemory" class="btn btn-primary">Collect Memory</button>
+	
+	<div class="float-right">
+      <a href="http://services-uswest.skytap.com:26569/#/" target="_blank" id="btnCollectMemoRes" class="viewresults" class="btn btn-success" style="display:none;">View Results</a>
+	  <button type="button" id="timelineNext" class="btn btn-success nxt" style="display:none;">Next</button>
+	</div>
+  </div>
+  
+  
+  <div id="remediateDiv" style="display:none;">
+    <ul id="existingHostsreme">
+    </ul>
+    <div class="form-group">
+        <label for="existInvreme">Existing Investigations:</label>
+        <select class="form-control" name="existInvreme" id="existInvreme">
+      </select>
+      </div>
+    <div class="form-group">
+        <label for="remeoption">Options:</label>
+        <select class="form-control" name="remeoption" id="remeoption">
+      <option value="select">Select</option>
+      <option value="0">Kill running processes, forensically search file system, and completely remove specified files</option>
+      <option value="1">Kill running processes only</option>
+      <option value="2">Kill running processes and delete process executables</option></select>
+      </div>
+      <div class="form-group">
+        <label for="remecomment">Comment:</label>
+        <input type="text" class="form-control" id="remecomment" placeholder="Enter Comment" name="remecomment" required>
+      </div>
+    <p id="rememsg" class="msg" style="display:none;color:green;">Remediate Success</span></p>
+    <button type="button" id="btnremediate" class="btn btn-primary">Remediate</button>
+    <div class="float-right">
+        <a href="http://services-uswest.skytap.com:26569/#/" target="_blank" id="remeRes" class="viewresults" class="btn btn-success" style="display:none;">View Results</a>
+      <button type="button" id="remeNext" class="btn btn-success nxt" style="display:none;">Next</button>
+    </div>
+    </div>
+  
+  
+
+</div>
+  
+    </div>
+    <!-- /#page-content-wrapper -->
+
+  </div>
+  
+  <!-- Menu Toggle Script -->
+  <script>
+	/*Modals*/
+ 
+  window.investselId = null;
+  $('#btnInvestigation').click(function(){
+  let iname = $("#txtname").val().trim();
+  let comment = $("#comment").val().trim();
+  if(iname.length == 0 || comment.length == 0){alert("Please Enter the Required Fields"); return false;}
+  $.ajax({
+	type:"POST",
+	url:"http://services-uswest.skytap.com:26569/integration/investigations",
+	data:JSON.stringify({
+	"Name":iname,
+	"Comment":comment,
+	"Key":"x3c2ziFlPkKgCWdlPfGRIg=="
+	}),
+	contentType: "application/json",
+	dataType:"json",
+	success:function(data){
+	investigationId = data.InvestigationId;
+	window.investselId = investigationId;
+  $('.viewresults').attr('href',"http://services-uswest.skytap.com:26569/#/investigation/"+investigationId);
+	//$("#investNext,#investRes,#imsg").show();
+	$("#investRes,#imsg").show();
+	},
+	error:function(err){
+	console.log(err)
+	}
+ });
+  });
+  
+  
+  
+  $('#existInv').change(function(){
+  window.investselId = $(this).val();
+  });
+  
+  $('#investNext').click(function(){
+  $('#modltitle').text('Create Snapshot');
+  $('#investigatinDiv').hide();
+  $('#snapshotDiv').show();
+  $('#navlinks li a').removeClass('active');
+  $('#navlinks li:nth-child(2)').find('a').addClass('active');
+  getHosts("existingHosts");
+  getInvestList("existInv");
+  $('#modltitle').text("Create Snapshot");
+  });
+
+
+
+  $('#snapflow').click(function(){
+  $('#modltitle').text("Create Snapshot");
+  getHosts("existingHosts");
+  getInvestList("existInv");
+  $('#collectDataDiv,#remediateDiv,#timelineDiv,#investigatinDiv').hide();
+  $('#snapshotDiv').show();
+  $('#navlinks li a').removeClass('active');
+  $('#navlinks li:nth-child(2)').find('a').addClass('active');
+  });
+
+  $('#investigationflow').click(function(){
+    $('#modltitle').text("Create Investigation");
+  $('#investigatinDiv').show();
+  $('#timelineDiv').hide();
+  $('#collectDataDiv,#remediateDiv').hide();
+  $('#snapshotDiv').hide();
+  $('#navlinks li a').removeClass('active');
+  $('#navlinks li:nth-child(1)').find('a').addClass('active');
+  });
+
+  
+  
+  $('#investigationModal').on('shown.bs.modal', function () {
+    $('.modal-backdrop.fade.show').hide();
+    $('.viewresults,.msg,.nxt').hide();
+    $('#investigationModal').find('input[type="text"]').val('');
+    $('#investigationModal').find('select').val('select');
+})
+
+
+  
+  $('#btnSnapshot').click(function(){
+  let tcomment = $("#tcomment").val().trim();
+  if(tcomment.length == 0){alert("Please Enter the Required Fields"); return false;}
+  let invID = $('#existInv').val();
+  if(invID == 'select'){
+  alert('Please Select Investigation');
+  return false;
+  }
+  let targethost = getTargets("existingHosts");
+  $.ajax({
+	type:"POST",
+	url:"http://services-uswest.skytap.com:26569/integration/investigations/snapshot",
+	data:JSON.stringify({
+	"InvestigationId":invID,
+	"Targets":targethost,
+	"Comment":tcomment,
+	"Key":"x3c2ziFlPkKgCWdlPfGRIg=="
+	}),
+	contentType: "application/json",
+	dataType:"json",
+	success:function(data){
+    $('.viewresults').attr('href',"http://services-uswest.skytap.com:26569/#/investigation/"+invID);
+	$('#invSelected').text($('#existInv').find('option:selected').text());
+	//$('#snapmsg, #snapNext, #snapRes').show();
+	$('#snapmsg,#snapRes').show();
+	},
+	error:function(err){
+	console.log(err)
+	}
+	});
+  });
+  
+  $('#snapNext').click(function(){
+  getInvestList("existInvreme");
+ getHosts("existingHostsreme");
+  $('#snapshotDiv').hide();
+  $('#remediateDiv').show();
+  $('#navlinks li a').removeClass('active');
+  $('#navlinks li:nth-child(3)').find('a').addClass('active');
+  $('#modltitle').text("Remediate");
+  });
+
+  $('#btnremediate').click(function(){
+  const urlParams = new URLSearchParams(window.location.search);
+  const md5 = urlParams.get('md5');
+  console.log(md5);
+  let hashes = md5;
+  hashes = hashes.split(';;');
+  hashes = [{"Md5": hashes[0], "Size": parseInt(hashes[1])}];
+  let targethost = getTargets("existingHosts");
+  let invID = $('#existInvreme').val();
+  $.ajax({
+	type:"POST",
+	url:"http://services-uswest.skytap.com:26569/integration/investigations/remediate",
+	data:JSON.stringify({
+	"InvestigationId":invID,
+	"Targets":targethost,
+	"Option":$('#remeoption').val(),
+	"Hashes":hashes,
+	"Comment":$('#remecomment').val(),
+	"Key":"x3c2ziFlPkKgCWdlPfGRIg=="
+	}),
+	contentType: "application/json",
+	dataType:"json",
+	success:function(data){
+    $('.viewresults').attr('href',"http://services-uswest.skytap.com:26569/#/investigation/"+invID);
+	$('#invSelected').text($('#existInv').find('option:selected').text());
+	//$('#rememsg, #remeNext, #remeRes').show();
+	$('#rememsg,#remeRes').show();
+	},
+	error:function(err){
+	console.log(err)
+	}
+	});
+  });
+
+  $('#remeNext').click(function(){
+  getHosts("existingHostsData");
+  getInvestList("existInvData");
+  $('#remediateDiv').hide();
+  $('#collectDataDiv').show();
+  $('#navlinks li a').removeClass('active');
+  $('#navlinks li:nth-child(4)').find('a').addClass('active');
+  $('#modltitle').text("Collect Data");
+  });
+
+   $('#btnCollectData').click(function(){
+  let dataComment = $("#dataComment").val().trim();
+  if(dataComment.length == 0){alert("Please Enter the Required Fields"); return false;}
+  let invID = $('#existInvData').val();
+  if(invID == 'select'){
+  alert('Please Select Investigation');
+  return false;
+  }
+  let targethost = getTargets("existingHostsData");
+  $.ajax({
+	type:"POST",
+	url:"http://services-uswest.skytap.com:26569/integration/investigations/collectdata",
+	data:JSON.stringify({
+  "InvestigationId":invID,
+  "CriteriaName":"Forensic artifacts",
+	"Targets":targethost,
+	"Comment":dataComment,
+	"Key":"x3c2ziFlPkKgCWdlPfGRIg=="
+	}),
+	contentType: "application/json",
+	dataType:"json",
+	success:function(data){
+    $('.viewresults').attr('href',"http://services-uswest.skytap.com:26569/#/investigation/"+invID);
+	//$('#dataMsg, #collectDataNext, #collectDataRes').show();
+	$('#dataMsg, #collectDataRes').show();
+	},
+	error:function(err){
+	console.log(err)
+	}
+	});
+  });
+  
+  $('#collectDataNext').click(function(){
+    getInvestList("existInvTimeline");
+    getHosts("existingHostsTime");
+  $('#collectDataDiv').hide();
+  $('#timelineDiv').show();
+    $('#navlinks li a').removeClass('active');
+  $('#navlinks li:nth-child(5)').find('a').addClass('active');
+  $('#modltitle').text("Collect TimeLine");
+  });
+
+  $('#btnCollectTime').click(function(){
+  let timeComment = $("#timeComment").val().trim();
+  if(timeComment.length == 0){alert("Please Enter the Required Fields"); return false;}
+  let invID = $('#existInvTimeline').val();
+  if(invID == 'select'){
+  alert('Please Select Investigation');
+  return false;
+  }
+  let targethost = getTargets("existingHostsTime");
+  $.ajax({
+	type:"POST",
+	url:"http://services-uswest.skytap.com:26569/integration/investigations/timeline",
+	data:JSON.stringify({
+  "InvestigationId":invID,
+	"Targets":targethost,
+	"Comment":timeComment,
+	"Key":"x3c2ziFlPkKgCWdlPfGRIg=="
+	}),
+	contentType: "application/json",
+	dataType:"json",
+	success:function(data){
+    $('.viewresults').attr('href',"http://services-uswest.skytap.com:26569/#/investigation/"+invID);
+	$('#timemsg,#btnCollectTimeRes').show();
+	},
+	error:function(err){
+	console.log(err)
+	}
+	});
+  });
+  
+  
+  $('#btnCollectMemory').click(function(){
+  let memoryComment = $("#memoryComment").val().trim();
+  if(memoryComment.length == 0){alert("Please Enter the Required Fields"); return false;}
+  let invID = $('#existInvMemory').val();
+  if(invID == 'select'){
+  alert('Please Select Investigation');
+  return false;
+  }
+  let targethost = getTargets("existingHostsMemory");
+  $.ajax({
+	type:"POST",
+	url:"http://services-uswest.skytap.com:26569/integration/investigations/collectmemory",
+	data:JSON.stringify({
+  "InvestigationId":invID,
+	"Targets":targethost,
+	"Comment":memoryComment,
+	"Key":"x3c2ziFlPkKgCWdlPfGRIg=="
+	}),
+	contentType: "application/json",
+	dataType:"json",
+	success:function(data){
+    $('.viewresults').attr('href',"http://services-uswest.skytap.com:26569/#/investigation/"+invID);
+	$('#memomsg,#btnCollectMemoRes').show();
+	},
+	error:function(err){
+	console.log(err)
+	}
+	});
+  });
+  
+  
+  
+  
+  //flows
+  $('#navSnap').click(function(){
+  //$('#investigationModal').modal('show');
+  $('#modltitle').text("Create Snapshot");
+  getHosts("existingHosts");
+  getInvestList("existInv");
+  $('#collectDataDiv,#remediateDiv,#timelineDiv,#investigatinDiv,#memoryDiv').hide();
+  $('#snapshotDiv').show();
+  $('#navlinks li a').removeClass('active');
+  $('#navlinks li:nth-child(2)').find('a').addClass('active');
+  });
+
+  $('#navRemediate').click(function(){
+  //$('#investigationModal').modal('show');
+  $('#modltitle').text("Create Remediate");
+  getHosts("existingHostsreme");
+  getInvestList("existInvreme");
+  $('#investigatinDiv').hide();
+  $('#timelineDiv').hide();
+  $('#collectDataDiv,#snapshotDiv,#memoryDiv').hide();
+  $('#remediateDiv').show();
+  $('#navlinks li a').removeClass('active');
+  $('#navlinks li:nth-child(6)').find('a').addClass('active');
+  });
+  
+  $('#navData').click(function(){
+	$('#modltitle').text("Collect Data");
+	getInvestList("existInvData");
+	getHosts("existingHostsData");
+  //$('#investigationModal').modal('show');
+	$('#investigatinDiv').hide();
+	$('#snapshotDiv').hide();
+	$('#timelineDiv,#remediateDiv,#memoryDiv').hide();
+	$('#collectDataDiv').show();
+    $('#navlinks li a').removeClass('active');
+	$('#navlinks li:nth-child(3)').find('a').addClass('active');
+  });
+  
+  $('#navMemory').click(function(){
+	$('#modltitle').text("Collect Memory");
+	getInvestList("existInvMemory");
+	getHosts("existingHostsMemory");
+	$('#snapshotDiv').hide();
+	$('#collectDataDiv,#remediateDiv,#timelineDiv,#investigatinDiv').hide();
+	$('#memoryDiv').show();
+    $('#navlinks li a').removeClass('active');
+	$('#navlinks li:nth-child(5)').find('a').addClass('active');
+  });
+  
+  
+  
+  $('#navTime').click(function(){
+    $('#modltitle').text("Collect Timeline");
+    getInvestList("existInvTimeline");
+    getHosts("existingHostsTime");
+	//$('#investigationModal').modal('show');
+	$('#collectDataDiv').hide();
+	$('#investigatinDiv').hide();
+	$('#snapshotDiv,#remediateDiv,#memoryDiv').hide();
+	$('#timelineDiv').show();
+    $('#navlinks li a').removeClass('active');
+    $('#navlinks li:nth-child(4)').find('a').addClass('active');
+  });
+  
+  
+  
+  $('#navInvest').click(function(){
+  //$('#investigationModal').modal('show');
+  $('#modltitle').text("Create Investigation");
+  $('#investigatinDiv').show();
+  $('#timelineDiv').hide();
+  $('#collectDataDiv,#remediateDiv,#memoryDiv').hide();
+  $('#snapshotDiv').hide();
+  $('#navlinks li a').removeClass('active');
+  $('#navlinks li:nth-child(1)').find('a').addClass('active');
+  });
+  
+	
+	
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+      $(this).toggleClass("fa-angle-double-left fa-angle-double-right");
+    });
+
+
+
+    
+   function getHosts(id){
+	const urlParams = new URLSearchParams(window.location.search);
+   const vas = urlParams.get('vas');
+   console.log(vas);
+  let hosts = vas;
+  hosts = hosts.slice(1,hosts.length);
+  hosts = hosts.split(",");
+  let hstr = '';
+  for(let i=0;i<hosts.length;i++){
+  hstr += '<li><input checked type="checkbox" value="'+hosts[i]+'" class="exhosts"/>'+hosts[i]+'</li>';
+  }
+  $('#'+id).html(hstr);
+   }
+   
+   function getTargets(id){
+     let targetHosts = [];
+    $('#'+id+' .exhosts:checked').each(function(){
+      targetHosts.push(""+$(this).val()+"");
+	  });
+	  return targetHosts;
+   }
+
+   function getInvestList(id){
+    $.ajax({
+	type:"GET",
+	url:"http://services-uswest.skytap.com:26569/integration/investigations?Key=x3c2ziFlPkKgCWdlPfGRIg==",
+	contentType: "application/json",
+	dataType:"json",
+	success:function(data){
+	let str = '<option value="select">Select</option>';
+	for(var i=0;i<data.length;i++){
+	if(window.investselId == data[i].ID){
+	str += '<option selected value="'+data[i].ID+'">'+data[i].Name+'</option>';
+	}else{
+	str += '<option value="'+data[i].ID+'">'+data[i].Name+'</option>';
+	}
+	}
+  $('#'+id).html(str);
+	},
+	error:function(err){
+	console.log(err)
+	}
+ });
+   }
+  </script>
+
+</body>
+
+</html>

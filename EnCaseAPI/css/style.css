@@ -1,0 +1,62 @@
+#viewerpane{
+	width:100%;
+	height:100%;
+	margin-top: 40px;
+}
+
+.bg-dark {
+    background-color: #4d5a58 !important;
+}
+
+ul{
+	list-style: none;
+    margin-left: 0;
+	padding-left: 2px;
+}
+
+.sidetoggle {
+    color: #055e78;
+    position: absolute;
+}
+
+.modal-backdrop.fade.show{
+	display: none !important;
+}
+
+#menu-toggle {
+    font-size: 32px;
+}
+
+.viewresults{
+	color:green !important;
+	text-decoration: underline !important;
+}
+
+.sidebar-heading{
+	height: 56px;
+    font-size: 38px;
+    font-family: auto;
+}
+
+a{
+	cursor: pointer;
+}
+
+#navlinks .active{
+	background-color: #bbcfe1 !important;
+    border-bottom-color: #bbcfe1 !important;
+}
+
+.modal-backdrop
+{
+    opacity:0.5 !important;
+}
+
+.modal-backdrop.fade.in{
+	display: hide !important;
+}
+
+#collectDataDiv,#remediateDiv,#timelineDiv,#investigatinDiv,#snapshotDiv,#memoryDiv{
+	padding: 15px;
+	background-color: #bbcfe1;
+}

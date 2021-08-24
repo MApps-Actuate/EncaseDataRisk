@@ -1,0 +1,683 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.8.0.v201905290745</property>
+    <property name="units">in</property>
+    <property name="theme">ThemesReportItems31.Modern</property>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="layoutPreference">auto layout</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">120</property>
+    <list-property name="libraries">
+        <structure>
+            <property name="fileName">/ThemesReportItems31.rptlibrary</property>
+            <property name="namespace">ThemesReportItems31</property>
+        </structure>
+    </list-property>
+    <method name="onContentUpdate"><![CDATA[var uiOptions = this.getViewer().getUIOptions();
+    uiOptions.enableToolBar(false);
+    this.getViewer().setUIOptions(uiOptions);]]></method>
+    <parameters>
+        <scalar-parameter name="DocumentID" id="2186">
+            <property name="valueType">static</property>
+            <property name="isRequired">true</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+    </parameters>
+    <data-sources>
+        <data-mart-data-source name="Data Source" id="4">
+            <property name="datamartURL">Data Objects/DataRisk Analytics</property>
+            <property name="accessType">latest</property>
+        </data-mart-data-source>
+    </data-sources>
+    <property name="linkedDataModels">
+        <data-mart-linked-data-model name="dmRiskData" id="2278">
+            <property name="dataSource">Data Source</property>
+            <property name="dataObject">dmRiskData</property>
+        </data-mart-linked-data-model>
+    </property>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <property name="type">custom</property>
+            <property name="orientation">auto</property>
+            <property name="topMargin">0.325in</property>
+            <property name="leftMargin">0.3in</property>
+            <property name="bottomMargin">0.3333333333333333in</property>
+            <property name="rightMargin">0.19166666666666668in</property>
+            <property name="backgroundColor">white</property>
+            <property name="height">300px</property>
+            <property name="width">610px</property>
+            <property name="showHeaderOnFirst">false</property>
+            <property name="showFooterOnLast">false</property>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <table id="2524">
+            <list-property name="userProperties">
+                <structure>
+                    <property name="name">__ac_group_collapse_level</property>
+                    <property name="type">string</property>
+                </structure>
+            </list-property>
+            <property name="fontFamily">serif</property>
+            <property name="borderBottomStyle">none</property>
+            <property name="borderLeftStyle">none</property>
+            <property name="borderRightStyle">none</property>
+            <property name="borderTopStyle">none</property>
+            <property name="height">210px</property>
+            <property name="width">600px</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">doc_id</property>
+                    <text-property name="displayName">doc_id</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["doc_id"]</expression>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="name">doc_date</property>
+                    <text-property name="displayName">Creation Date</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["doc_date"]</expression>
+                    <property name="dataType">date-time</property>
+                </structure>
+                <structure>
+                    <property name="name">name</property>
+                    <text-property name="displayName">Document Name</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["name"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">document_body</property>
+                    <text-property name="displayName">Body</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["document_body"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">document_month</property>
+                    <text-property name="displayName">Creation Month</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["document_month"]</expression>
+                    <property name="dataType">date</property>
+                </structure>
+                <structure>
+                    <property name="name">sumriskscore</property>
+                    <text-property name="displayName">sumriskscore</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["sumriskscore"]</expression>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="name">maxrisklevel</property>
+                    <text-property name="displayName">maxrisklevel</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["maxrisklevel"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <property name="linkedDataModel">dmRiskData</property>
+            <list-property name="filter">
+                <structure>
+                    <property name="operator">eq</property>
+                    <expression name="expr" type="javascript">row["doc_id"]</expression>
+                    <simple-property-list name="value1">
+                        <value type="javascript">params["DocumentID"].value</value>
+                    </simple-property-list>
+                    <property name="updateAggregation">true</property>
+                </structure>
+            </list-property>
+            <column id="2563"/>
+            <column id="2564"/>
+            <column id="2565"/>
+            <column id="2566"/>
+            <column id="2567"/>
+            <column id="2568"/>
+            <column id="2569"/>
+            <header>
+                <row id="2525">
+                    <property name="backgroundColor">#FFFFFF</property>
+                    <property name="color">#FF8040</property>
+                    <cell id="2526">
+                        <property name="backgroundColor">#FFFFFF</property>
+                        <property name="borderBottomColor">#FFDAC8</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">medium</property>
+                        <property name="borderLeftStyle">none</property>
+                        <property name="borderRightStyle">none</property>
+                        <property name="borderTopStyle">none</property>
+                        <label id="2531">
+                            <property name="backgroundColor">#FFF3E0</property>
+                            <property name="fontFamily">"Calibri"</property>
+                            <property name="fontSize">10pt</property>
+                            <property name="fontWeight">normal</property>
+                            <property name="color">#E65100</property>
+                            <property name="borderBottomColor">#E8E8E8</property>
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">medium</property>
+                            <property name="borderLeftColor">#E8E8E8</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderLeftWidth">medium</property>
+                            <property name="borderRightColor">#E8E8E8</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderRightWidth">medium</property>
+                            <property name="borderTopColor">#E8E8E8</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="borderTopWidth">medium</property>
+                            <property name="paddingLeft">3pt</property>
+                            <property name="textAlign">left</property>
+                            <text-property name="text">Document Name</text-property>
+                        </label>
+                    </cell>
+                    <cell id="2528">
+                        <property name="backgroundColor">#FFFFFF</property>
+                        <property name="borderBottomColor">#FFDAC8</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">medium</property>
+                        <property name="borderLeftStyle">none</property>
+                        <property name="borderRightStyle">none</property>
+                        <property name="borderTopStyle">none</property>
+                        <label id="2529">
+                            <property name="backgroundColor">#FFF3E0</property>
+                            <property name="fontFamily">"Calibri"</property>
+                            <property name="fontSize">10pt</property>
+                            <property name="fontWeight">normal</property>
+                            <property name="color">#E65100</property>
+                            <property name="borderBottomColor">#E8E8E8</property>
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">medium</property>
+                            <property name="borderLeftColor">#E8E8E8</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderLeftWidth">medium</property>
+                            <property name="borderRightColor">#E8E8E8</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderRightWidth">medium</property>
+                            <property name="borderTopColor">#E8E8E8</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="borderTopWidth">medium</property>
+                            <property name="paddingLeft">3pt</property>
+                            <property name="textAlign">left</property>
+                            <text-property name="text">Creation Date</text-property>
+                        </label>
+                    </cell>
+                    <cell id="2530">
+                        <property name="backgroundColor">#FFFFFF</property>
+                        <property name="borderBottomColor">#FFDAC8</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">medium</property>
+                        <property name="borderLeftStyle">none</property>
+                        <property name="borderRightStyle">none</property>
+                        <property name="borderTopStyle">none</property>
+                        <label id="2535">
+                            <property name="backgroundColor">#FFF3E0</property>
+                            <property name="fontFamily">"Calibri"</property>
+                            <property name="fontSize">10pt</property>
+                            <property name="fontWeight">normal</property>
+                            <property name="color">#E65100</property>
+                            <property name="borderBottomColor">#E8E8E8</property>
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderLeftColor">#E8E8E8</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderRightColor">#E8E8E8</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderTopColor">#E8E8E8</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="paddingLeft">3pt</property>
+                            <property name="textAlign">left</property>
+                            <text-property name="text">Creation Month</text-property>
+                        </label>
+                    </cell>
+                    <cell id="2532">
+                        <property name="backgroundColor">#FFFFFF</property>
+                        <property name="borderBottomColor">#FFDAC8</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">medium</property>
+                        <property name="borderLeftStyle">none</property>
+                        <property name="borderRightStyle">none</property>
+                        <property name="borderTopStyle">none</property>
+                        <label id="2539">
+                            <property name="backgroundColor">#FFF3E0</property>
+                            <property name="fontFamily">"Calibri"</property>
+                            <property name="fontSize">10pt</property>
+                            <property name="fontWeight">normal</property>
+                            <property name="color">#E65100</property>
+                            <property name="borderBottomColor">#E8E8E8</property>
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderLeftColor">#E8E8E8</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderRightColor">#E8E8E8</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderTopColor">#E8E8E8</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="paddingLeft">3pt</property>
+                            <property name="textAlign">center</property>
+                            <text-property name="text">Risk Level</text-property>
+                        </label>
+                    </cell>
+                    <cell id="2534">
+                        <property name="backgroundColor">#FFFFFF</property>
+                        <property name="borderBottomColor">#FFDAC8</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">medium</property>
+                        <property name="borderLeftStyle">none</property>
+                        <property name="borderRightStyle">none</property>
+                        <property name="borderTopStyle">none</property>
+                        <label id="2537">
+                            <property name="backgroundColor">#FFF3E0</property>
+                            <property name="fontFamily">"Calibri"</property>
+                            <property name="fontSize">10pt</property>
+                            <property name="fontWeight">normal</property>
+                            <property name="color">#E65100</property>
+                            <property name="borderBottomColor">#E8E8E8</property>
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderLeftColor">#E8E8E8</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderRightColor">#E8E8E8</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderTopColor">#E8E8E8</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="paddingRight">5pt</property>
+                            <property name="textAlign">right</property>
+                            <text-property name="text">Risk Score</text-property>
+                        </label>
+                    </cell>
+                    <cell id="2536">
+                        <property name="colSpan">2</property>
+                        <property name="rowSpan">1</property>
+                        <property name="backgroundColor">#FFFFFF</property>
+                        <property name="borderBottomStyle">none</property>
+                        <property name="borderLeftStyle">none</property>
+                        <property name="borderRightStyle">none</property>
+                        <property name="borderTopStyle">none</property>
+                    </cell>
+                </row>
+            </header>
+            <group id="2570">
+                <property name="groupName">NewTableGroup1</property>
+                <expression name="keyExpr" type="javascript">row["doc_id"]</expression>
+                <property name="hideDetail">false</property>
+                <header>
+                    <row id="2571">
+                        <property name="backgroundColor">#FFFFFF</property>
+                        <cell id="2572">
+                            <property name="borderBottomColor">#FFDAC8</property>
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftColor">#FFDAC8</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderLeftWidth">thin</property>
+                            <property name="borderRightColor">#FFDAC8</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderRightWidth">thin</property>
+                            <property name="borderTopColor">#FFDAC8</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="borderTopWidth">thin</property>
+                            <data id="2546">
+                                <property name="fontFamily">"Calibri"</property>
+                                <property name="fontSize">10pt</property>
+                                <property name="color">#004080</property>
+                                <property name="paddingLeft">3pt</property>
+                                <property name="resultSetColumn">name</property>
+                            </data>
+                        </cell>
+                        <cell id="2573">
+                            <property name="borderBottomColor">#FFDAC8</property>
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftColor">#FFDAC8</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderLeftWidth">thin</property>
+                            <property name="borderRightColor">#FFDAC8</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderRightWidth">thin</property>
+                            <property name="borderTopColor">#FFDAC8</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="borderTopWidth">thin</property>
+                            <data id="2544">
+                                <property name="fontFamily">"Calibri"</property>
+                                <property name="fontSize">10pt</property>
+                                <property name="color">#004080</property>
+                                <property name="paddingLeft">3pt</property>
+                                <structure name="dateTimeFormat">
+                                    <property name="category">Medium Date</property>
+                                    <property name="pattern">Medium Date</property>
+                                </structure>
+                                <property name="resultSetColumn">doc_date</property>
+                            </data>
+                        </cell>
+                        <cell id="2574">
+                            <property name="borderBottomColor">#FFDAC8</property>
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftColor">#FFDAC8</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderLeftWidth">thin</property>
+                            <property name="borderRightColor">#FFDAC8</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderRightWidth">thin</property>
+                            <property name="borderTopColor">#FFDAC8</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="borderTopWidth">thin</property>
+                            <data id="2550">
+                                <property name="fontFamily">"Calibri"</property>
+                                <property name="fontSize">10pt</property>
+                                <property name="color">#004080</property>
+                                <property name="paddingLeft">3pt</property>
+                                <structure name="dateTimeFormat">
+                                    <property name="category">Custom</property>
+                                    <property name="pattern">MMM yyyy</property>
+                                </structure>
+                                <property name="resultSetColumn">document_month</property>
+                            </data>
+                        </cell>
+                        <cell id="2575">
+                            <property name="borderBottomColor">#FFDAC8</property>
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftColor">#FFDAC8</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderLeftWidth">thin</property>
+                            <property name="borderRightColor">#FFDAC8</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderRightWidth">thin</property>
+                            <property name="borderTopColor">#FFDAC8</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="borderTopWidth">thin</property>
+                            <data id="2554">
+                                <property name="fontFamily">"Calibri"</property>
+                                <property name="fontSize">10pt</property>
+                                <property name="color">#004080</property>
+                                <property name="paddingLeft">3pt</property>
+                                <property name="textAlign">center</property>
+                                <property name="resultSetColumn">maxrisklevel</property>
+                            </data>
+                        </cell>
+                        <cell id="2576">
+                            <property name="borderBottomColor">#FFDAC8</property>
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">thin</property>
+                            <property name="borderLeftColor">#FFDAC8</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderLeftWidth">thin</property>
+                            <property name="borderRightColor">#FFDAC8</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderRightWidth">thin</property>
+                            <property name="borderTopColor">#FFDAC8</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="borderTopWidth">thin</property>
+                            <data id="2552">
+                                <property name="fontFamily">"Calibri"</property>
+                                <property name="fontSize">10pt</property>
+                                <property name="color">#004080</property>
+                                <property name="paddingRight">5pt</property>
+                                <property name="textAlign">right</property>
+                                <property name="resultSetColumn">sumriskscore</property>
+                            </data>
+                        </cell>
+                        <cell id="2577">
+                            <property name="colSpan">2</property>
+                            <property name="rowSpan">1</property>
+                            <property name="borderBottomStyle">none</property>
+                            <property name="borderLeftStyle">none</property>
+                            <property name="borderRightStyle">none</property>
+                            <property name="borderTopStyle">none</property>
+                        </cell>
+                    </row>
+                    <row id="3301">
+                        <property name="backgroundColor">#FFFFFF</property>
+                        <property name="height">5pt</property>
+                        <cell id="3302">
+                            <property name="borderBottomStyle">none</property>
+                            <property name="borderLeftStyle">none</property>
+                            <property name="borderRightStyle">none</property>
+                            <property name="borderTopStyle">none</property>
+                        </cell>
+                        <cell id="3303">
+                            <property name="borderBottomStyle">none</property>
+                            <property name="borderLeftStyle">none</property>
+                            <property name="borderRightStyle">none</property>
+                            <property name="borderTopStyle">none</property>
+                        </cell>
+                        <cell id="3304">
+                            <property name="borderBottomStyle">none</property>
+                            <property name="borderLeftStyle">none</property>
+                            <property name="borderRightStyle">none</property>
+                            <property name="borderTopStyle">none</property>
+                        </cell>
+                        <cell id="3305">
+                            <property name="borderBottomStyle">none</property>
+                            <property name="borderLeftStyle">none</property>
+                            <property name="borderRightStyle">none</property>
+                            <property name="borderTopStyle">none</property>
+                        </cell>
+                        <cell id="3306">
+                            <property name="borderBottomStyle">none</property>
+                            <property name="borderLeftStyle">none</property>
+                            <property name="borderRightStyle">none</property>
+                            <property name="borderTopStyle">none</property>
+                        </cell>
+                        <cell id="3307">
+                            <property name="borderBottomStyle">none</property>
+                            <property name="borderLeftStyle">none</property>
+                            <property name="borderRightStyle">none</property>
+                            <property name="borderTopStyle">none</property>
+                        </cell>
+                        <cell id="3308">
+                            <property name="borderBottomStyle">none</property>
+                            <property name="borderLeftStyle">none</property>
+                            <property name="borderRightStyle">none</property>
+                            <property name="borderTopStyle">none</property>
+                        </cell>
+                    </row>
+                    <row id="3309">
+                        <property name="backgroundColor">#FFFFFF</property>
+                        <property name="height">5pt</property>
+                        <cell id="3310">
+                            <property name="colSpan">5</property>
+                            <property name="rowSpan">1</property>
+                            <property name="borderBottomStyle">none</property>
+                            <property name="borderLeftStyle">none</property>
+                            <property name="borderRightStyle">none</property>
+                            <property name="borderTopStyle">none</property>
+                            <table id="3317">
+                                <property name="fontFamily">"Calibri"</property>
+                                <property name="fontSize">9pt</property>
+                                <property name="borderBottomStyle">none</property>
+                                <property name="borderLeftStyle">none</property>
+                                <property name="borderRightStyle">none</property>
+                                <property name="borderTopStyle">none</property>
+                                <list-property name="boundDataColumns">
+                                    <structure>
+                                        <property name="name">doc_id2</property>
+                                        <text-property name="displayName">Internal Document ID</text-property>
+                                        <expression name="expression" type="javascript">dataSetRow["doc_id2"]</expression>
+                                        <property name="dataType">decimal</property>
+                                    </structure>
+                                    <structure>
+                                        <property name="name">cartridge</property>
+                                        <text-property name="displayName">Cartridge</text-property>
+                                        <expression name="expression" type="javascript">dataSetRow["cartridge"]</expression>
+                                        <property name="dataType">string</property>
+                                    </structure>
+                                    <structure>
+                                        <property name="name">entity</property>
+                                        <text-property name="displayName">Entity</text-property>
+                                        <expression name="expression" type="javascript">dataSetRow["entity"]</expression>
+                                        <property name="dataType">string</property>
+                                    </structure>
+                                </list-property>
+                                <property name="linkedDataModel">dmRiskData</property>
+                                <list-property name="filter">
+                                    <structure>
+                                        <property name="operator">eq</property>
+                                        <expression name="expr" type="javascript">row["doc_id2"]</expression>
+                                        <simple-property-list name="value1">
+                                            <value type="javascript">row._outer["doc_id"]</value>
+                                        </simple-property-list>
+                                        <property name="updateAggregation">true</property>
+                                    </structure>
+                                </list-property>
+                                <column id="3337">
+                                    <property name="width">1in</property>
+                                </column>
+                                <column id="3338">
+                                    <property name="width">1in</property>
+                                </column>
+                                <header>
+                                    <row id="3318">
+                                        <cell id="3321">
+                                            <label id="3834">
+                                                <property name="fontSize">11pt</property>
+                                                <property name="paddingLeft">2pt</property>
+                                                <property name="textAlign">left</property>
+                                                <text-property name="text">Entity</text-property>
+                                            </label>
+                                        </cell>
+                                        <cell id="3323">
+                                            <label id="3835">
+                                                <property name="fontSize">11pt</property>
+                                                <property name="paddingLeft">2pt</property>
+                                                <property name="textAlign">left</property>
+                                                <text-property name="text">Entity Value</text-property>
+                                            </label>
+                                        </cell>
+                                    </row>
+                                </header>
+                                <detail>
+                                    <row id="3325">
+                                        <cell id="3328">
+                                            <data id="3329">
+                                                <property name="resultSetColumn">cartridge</property>
+                                            </data>
+                                        </cell>
+                                        <cell id="3330">
+                                            <data id="3331">
+                                                <property name="resultSetColumn">entity</property>
+                                            </data>
+                                        </cell>
+                                    </row>
+                                </detail>
+                            </table>
+                        </cell>
+                        <cell id="3315">
+                            <property name="borderBottomStyle">none</property>
+                            <property name="borderLeftStyle">none</property>
+                            <property name="borderRightStyle">none</property>
+                            <property name="borderTopStyle">none</property>
+                        </cell>
+                        <cell id="3316">
+                            <property name="borderBottomStyle">none</property>
+                            <property name="borderLeftStyle">none</property>
+                            <property name="borderRightStyle">none</property>
+                            <property name="borderTopStyle">none</property>
+                        </cell>
+                    </row>
+                    <row id="3285">
+                        <property name="backgroundColor">#FFFFFF</property>
+                        <property name="height">5pt</property>
+                        <cell id="3286">
+                            <property name="borderBottomStyle">none</property>
+                            <property name="borderLeftStyle">none</property>
+                            <property name="borderRightStyle">none</property>
+                            <property name="borderTopStyle">none</property>
+                        </cell>
+                        <cell id="3287">
+                            <property name="borderBottomStyle">none</property>
+                            <property name="borderLeftStyle">none</property>
+                            <property name="borderRightStyle">none</property>
+                            <property name="borderTopStyle">none</property>
+                        </cell>
+                        <cell id="3288">
+                            <property name="borderBottomStyle">none</property>
+                            <property name="borderLeftStyle">none</property>
+                            <property name="borderRightStyle">none</property>
+                            <property name="borderTopStyle">none</property>
+                        </cell>
+                        <cell id="3289">
+                            <property name="borderBottomStyle">none</property>
+                            <property name="borderLeftStyle">none</property>
+                            <property name="borderRightStyle">none</property>
+                            <property name="borderTopStyle">none</property>
+                        </cell>
+                        <cell id="3290">
+                            <property name="borderBottomStyle">none</property>
+                            <property name="borderLeftStyle">none</property>
+                            <property name="borderRightStyle">none</property>
+                            <property name="borderTopStyle">none</property>
+                        </cell>
+                        <cell id="3291">
+                            <property name="borderBottomStyle">none</property>
+                            <property name="borderLeftStyle">none</property>
+                            <property name="borderRightStyle">none</property>
+                            <property name="borderTopStyle">none</property>
+                        </cell>
+                        <cell id="3292">
+                            <property name="borderBottomStyle">none</property>
+                            <property name="borderLeftStyle">none</property>
+                            <property name="borderRightStyle">none</property>
+                            <property name="borderTopStyle">none</property>
+                        </cell>
+                    </row>
+                    <row id="2588">
+                        <property name="backgroundColor">#FFFFFF</property>
+                        <cell id="2589">
+                            <property name="colSpan">7</property>
+                            <property name="rowSpan">1</property>
+                            <property name="borderBottomStyle">none</property>
+                            <property name="borderLeftStyle">none</property>
+                            <property name="borderRightStyle">none</property>
+                            <property name="borderTopStyle">none</property>
+                            <label id="2533">
+                                <property name="backgroundColor">#FFF3E0</property>
+                                <property name="fontFamily">"Calibri"</property>
+                                <property name="fontSize">12pt</property>
+                                <property name="fontWeight">normal</property>
+                                <property name="color">#E65100</property>
+                                <property name="borderBottomColor">#FFDAC8</property>
+                                <property name="borderBottomStyle">solid</property>
+                                <property name="borderBottomWidth">medium</property>
+                                <property name="paddingLeft">3pt</property>
+                                <text-property name="text">Document Text Summary</text-property>
+                            </label>
+                        </cell>
+                    </row>
+                    <row id="2596">
+                        <property name="backgroundColor">#FFFFFF</property>
+                        <property name="borderBottomColor">#FFDAC8</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">medium</property>
+                        <property name="borderLeftColor">#FFDAC8</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">medium</property>
+                        <property name="borderRightColor">#FFDAC8</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">medium</property>
+                        <property name="borderTopColor">#FFDAC8</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">medium</property>
+                        <cell id="2597">
+                            <property name="colSpan">7</property>
+                            <property name="rowSpan">1</property>
+                            <property name="borderBottomStyle">none</property>
+                            <property name="borderLeftStyle">none</property>
+                            <property name="borderRightStyle">none</property>
+                            <property name="borderTopStyle">none</property>
+                            <data id="2548">
+                                <property name="fontFamily">"Calibri"</property>
+                                <property name="fontSize">9pt</property>
+                                <property name="borderBottomStyle">none</property>
+                                <property name="borderLeftStyle">none</property>
+                                <property name="borderRightStyle">none</property>
+                                <property name="borderTopStyle">none</property>
+                                <property name="paddingLeft">3pt</property>
+                                <property name="paddingRight">3pt</property>
+                                <property name="overflow">auto</property>
+                                <property name="resultSetColumn">document_body</property>
+                            </data>
+                        </cell>
+                    </row>
+                </header>
+            </group>
+        </table>
+    </body>
+</report>

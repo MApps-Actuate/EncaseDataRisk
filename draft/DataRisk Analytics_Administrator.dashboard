@@ -1,0 +1,1683 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.8.0.v201905290745</property>
+    <property name="layoutPreference">auto layout</property>
+    <list-property name="libraries">
+        <structure>
+            <property name="fileName">ThemesReportItems3.rptlibrary</property>
+            <property name="namespace">ThemesReportItems3</property>
+        </structure>
+    </list-property>
+    <data-sources>
+        <data-mart-data-source name="Text Analytics DO" id="45">
+            <property name="datamartURL">Data Objects/DataRisk Analytics</property>
+            <property name="datamartVersion">-1</property>
+            <property name="accessType">latest</property>
+        </data-mart-data-source>
+        <data-mart-data-source name="Text Analytics DO1" id="2025">
+            <property name="datamartURL">Data Objects/DataRisk Analytics</property>
+            <property name="datamartVersion">-1</property>
+            <property name="accessType">latest</property>
+        </data-mart-data-source>
+        <data-mart-data-source name="Text Analytics DO2" id="3500">
+            <property name="datamartURL">Data Objects/DataRisk Analytics</property>
+            <property name="accessType">latest</property>
+        </data-mart-data-source>
+    </data-sources>
+    <property name="linkedDataModels">
+        <data-mart-linked-data-model name="dmUnionAllRisk" id="1843">
+            <property name="dataSource">Text Analytics DO1</property>
+            <property name="dataObject">dmUnionAllRisk</property>
+        </data-mart-linked-data-model>
+        <data-mart-linked-data-model name="dmDocument" id="2521">
+            <property name="dataSource">Text Analytics DO1</property>
+            <property name="dataObject">dmDocument</property>
+        </data-mart-linked-data-model>
+        <data-mart-linked-data-model name="dmIndividualRisk" id="1741">
+            <property name="dataSource">Text Analytics DO1</property>
+            <property name="dataObject">dmIndividualRisk</property>
+        </data-mart-linked-data-model>
+        <data-mart-linked-data-model name="Data Model" id="1900">
+            <property name="dataSource">Text Analytics DO1</property>
+            <property name="dataObject">Data Model</property>
+        </data-mart-linked-data-model>
+        <data-mart-linked-data-model name="Text Analytics DO::dmFinalDoc" id="4994">
+            <property name="dataSource">Text Analytics DO</property>
+            <property name="dataObject">dmFinalDoc</property>
+        </data-mart-linked-data-model>
+    </property>
+    <body>
+        <table name="NewTable" id="1851">
+            <property name="borderBottomStyle">none</property>
+            <property name="borderLeftStyle">none</property>
+            <property name="borderRightStyle">none</property>
+            <property name="borderTopStyle">none</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">doc_id</property>
+                    <text-property name="displayName">Internal Document ID</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["doc_id"]</expression>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="name">TotalDocId</property>
+                    <property name="dataType">integer</property>
+                    <property name="aggregateFunction">COUNTDISTINCT</property>
+                    <list-property name="arguments">
+                        <structure>
+                            <property name="name">Expression</property>
+                            <expression name="value" type="javascript">row["doc_id"]</expression>
+                        </structure>
+                    </list-property>
+                    <property name="allowExport">true</property>
+                </structure>
+            </list-property>
+            <property name="linkedDataModel">dmDocument</property>
+            <property name="isSummaryTable">true</property>
+            <column id="1857"/>
+            <header>
+                <row id="1883">
+                    <cell id="1884">
+                        <label name="NewLabel" id="1885">
+                            <property name="backgroundColor">#FFF3E0</property>
+                            <property name="fontFamily">"Calibri"</property>
+                            <text-property name="text">Total Documents</text-property>
+                        </label>
+                    </cell>
+                </row>
+            </header>
+            <footer>
+                <row id="1855">
+                    <property name="color">white</property>
+                    <cell id="1856">
+                        <property name="borderBottomStyle">none</property>
+                        <property name="borderLeftStyle">none</property>
+                        <property name="borderRightStyle">none</property>
+                        <property name="borderTopStyle">none</property>
+                        <data name="NewData" id="1858">
+                            <property name="backgroundColor">#FFF3E0</property>
+                            <property name="fontSize">20pt</property>
+                            <property name="fontWeight">normal</property>
+                            <property name="color">#004080</property>
+                            <property name="textAlign">center</property>
+                            <property name="resultSetColumn">TotalDocId</property>
+                        </data>
+                    </cell>
+                </row>
+            </footer>
+        </table>
+        <table name="NewTable1" id="1886">
+            <property name="borderBottomStyle">none</property>
+            <property name="borderLeftStyle">none</property>
+            <property name="borderRightStyle">none</property>
+            <property name="borderTopStyle">none</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">doc_id1</property>
+                    <text-property name="displayName">doc_id</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["doc_id1"]</expression>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="name">TotalRiskDoc</property>
+                    <property name="dataType">integer</property>
+                    <property name="aggregateFunction">COUNTDISTINCT</property>
+                    <list-property name="arguments">
+                        <structure>
+                            <property name="name">Expression</property>
+                            <expression name="value" type="javascript">row["doc_id1"]</expression>
+                        </structure>
+                    </list-property>
+                    <property name="allowExport">true</property>
+                </structure>
+            </list-property>
+            <property name="linkedDataModel">dmIndividualRisk</property>
+            <property name="isSummaryTable">true</property>
+            <column id="1893"/>
+            <header>
+                <row id="1887">
+                    <cell id="1888">
+                        <label name="NewLabel1" id="1889">
+                            <property name="backgroundColor">#FFF3E0</property>
+                            <property name="fontFamily">"Calibri"</property>
+                            <text-property name="text">Documents With Risk</text-property>
+                        </label>
+                    </cell>
+                </row>
+            </header>
+            <footer>
+                <row id="1890">
+                    <property name="color">white</property>
+                    <cell id="1891">
+                        <data name="NewData1" id="1894">
+                            <property name="backgroundColor">#FFF3E0</property>
+                            <property name="fontSize">20pt</property>
+                            <property name="color">#004080</property>
+                            <property name="textAlign">center</property>
+                            <property name="resultSetColumn">TotalRiskDoc</property>
+                        </data>
+                    </cell>
+                </row>
+            </footer>
+        </table>
+        <table name="NewTable11" id="2528">
+            <property name="borderBottomStyle">none</property>
+            <property name="borderLeftStyle">none</property>
+            <property name="borderRightStyle">none</property>
+            <property name="borderTopStyle">none</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">doc_id1</property>
+                    <text-property name="displayName">doc_id</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["doc_id1"]</expression>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="name">TotalRiskDoc</property>
+                    <property name="dataType">integer</property>
+                    <property name="aggregateFunction">COUNTDISTINCT</property>
+                    <list-property name="arguments">
+                        <structure>
+                            <property name="name">Expression</property>
+                            <expression name="value" type="javascript">row["doc_id1"]</expression>
+                        </structure>
+                    </list-property>
+                    <property name="allowExport">true</property>
+                </structure>
+            </list-property>
+            <property name="linkedDataModel">dmIndividualRisk</property>
+            <property name="isSummaryTable">true</property>
+            <column id="2535"/>
+            <header>
+                <row id="2529">
+                    <cell id="2530">
+                        <label name="NewLabel11" id="2531">
+                            <property name="backgroundColor">#FFF3E0</property>
+                            <property name="fontFamily">"Calibri"</property>
+                            <text-property name="text">Documents With Risk</text-property>
+                        </label>
+                    </cell>
+                </row>
+            </header>
+            <footer>
+                <row id="2532">
+                    <property name="color">white</property>
+                    <cell id="2533">
+                        <data name="NewData11" id="2534">
+                            <property name="backgroundColor">#FFF3E0</property>
+                            <property name="fontSize">20pt</property>
+                            <property name="color">#004080</property>
+                            <property name="textAlign">center</property>
+                            <property name="resultSetColumn">TotalRiskDoc</property>
+                        </data>
+                    </cell>
+                </row>
+            </footer>
+        </table>
+        <table name="NewTable4" id="2539">
+            <property name="borderBottomStyle">none</property>
+            <property name="borderLeftStyle">none</property>
+            <property name="borderRightStyle">none</property>
+            <property name="borderTopStyle">none</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">doc_id</property>
+                    <text-property name="displayName">Internal Document ID</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["doc_id"]</expression>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="name">TotalDocId</property>
+                    <property name="dataType">integer</property>
+                    <property name="aggregateFunction">COUNTDISTINCT</property>
+                    <list-property name="arguments">
+                        <structure>
+                            <property name="name">Expression</property>
+                            <expression name="value" type="javascript">row["doc_id"]</expression>
+                        </structure>
+                    </list-property>
+                    <property name="allowExport">true</property>
+                </structure>
+            </list-property>
+            <property name="linkedDataModel">dmDocument</property>
+            <property name="isSummaryTable">true</property>
+            <column id="2546"/>
+            <header>
+                <row id="2540">
+                    <cell id="2541">
+                        <label name="NewLabel6" id="2542">
+                            <property name="backgroundColor">#FFF3E0</property>
+                            <property name="fontFamily">"Calibri"</property>
+                            <text-property name="text">Total Documents</text-property>
+                        </label>
+                    </cell>
+                </row>
+            </header>
+            <footer>
+                <row id="2543">
+                    <property name="color">white</property>
+                    <cell id="2544">
+                        <property name="borderBottomStyle">none</property>
+                        <property name="borderLeftStyle">none</property>
+                        <property name="borderRightStyle">none</property>
+                        <property name="borderTopStyle">none</property>
+                        <data name="NewData6" id="2545">
+                            <property name="backgroundColor">#FFF3E0</property>
+                            <property name="fontSize">20pt</property>
+                            <property name="fontWeight">normal</property>
+                            <property name="color">#004080</property>
+                            <property name="textAlign">center</property>
+                            <property name="resultSetColumn">TotalDocId</property>
+                        </data>
+                    </cell>
+                </row>
+            </footer>
+        </table>
+        <text name="c0c41447-1009-478e-b3e8-ed608adb211d" id="2657">
+            <text-property name="content"><![CDATA[<script src="..\help\jsapi\scripts\jquery-1.8.0.min.js"</script> 
+<script>
+var myCSS = '';
+myCSS +=  '<style type="text/css">';
+myCSS +=  '          .actuate-selector-panel .actuate-selector-list .actuate-list-item  {';
+myCSS +=  '                         font-size:12px !important;';
+myCSS +=  '         }';
+myCSS +=  '          .actuate-widget-panel-header.actuate-unselectable {';
+myCSS +=  '                          padding:5px 0 0 0';
+myCSS +=  '          }';
+//myCSS +=  '      .actuate-widget-panel-tr{';
+//myCSS +=  '                      height:35px';
+//myCSS +=  '      }';
+myCSS +=  '          .actuate-selector-panel-header .actuate-widget-tool {';
+myCSS +=  '                         font-size:12px !important;';
+myCSS +=  '          }';
+
+myCSS +=  ' .popup_close { right: 3px; position: absolute; top: 0; opacity: 0.5; font-size: 12px; font-weight: 800; color: #111;} ';
+myCSS +=  ' .popup_content {  display: none; position: absolute; top: 15%; left: 15%; width: 1200px; height: 750px; padding: 10px; border: 5px solid #B0B1BA; background-color: #e8e8e8; z-index:1002; overflow: scroll;}';
+
+myCSS +=  '</style>';
+
+$(window.parent.document.head).append(myCSS);
+$(window.parent.document).find(".actuate-widget-panel-tr").not(":eq(0)").css({"height": "35px"});
+
+$(window.parent.document).find(".actuate-widget-panel-header-text").filter(function() { return ($(this).text() === 'Current Selections') }).css({"color": "rgb(99, 99, 99)"}).css({"font-weight": "bold"}).css({"font-size": "10pt"});
+
+//debugger;
+$(window.parent.document.body).append ("<div id='popupDetail' class='popup_content'><span id='popupClose' class='popup_close' >&amp;#10006;</span></div></div>");
+debugger;
+
+$(window.parent.document.body).find(".popup_content").click ( function () { debugger; $(window.parent.document.body).find(".popup_content").hide(); $(window.parent.document.body).find(".popup_content").find("iframe").remove(); $(window.parent.document.body).find(".popupClose").hide(); }  );
+
+</script>]]></text-property>
+        </text>
+        <table name="NewTable111" id="2693">
+            <property name="borderBottomStyle">none</property>
+            <property name="borderLeftStyle">none</property>
+            <property name="borderRightStyle">none</property>
+            <property name="borderTopStyle">none</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">doc_id1</property>
+                    <text-property name="displayName">doc_id</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["doc_id1"]</expression>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="name">TotalRiskDoc</property>
+                    <property name="dataType">integer</property>
+                    <property name="aggregateFunction">COUNTDISTINCT</property>
+                    <list-property name="arguments">
+                        <structure>
+                            <property name="name">Expression</property>
+                            <expression name="value" type="javascript">row["doc_id1"]</expression>
+                        </structure>
+                    </list-property>
+                    <property name="allowExport">true</property>
+                </structure>
+            </list-property>
+            <property name="linkedDataModel">dmIndividualRisk</property>
+            <property name="isSummaryTable">true</property>
+            <column id="2700"/>
+            <header>
+                <row id="2694">
+                    <cell id="2695">
+                        <label name="NewLabel111" id="2696">
+                            <property name="backgroundColor">#FFF3E0</property>
+                            <property name="fontFamily">"Calibri"</property>
+                            <text-property name="text">Documents With Risk</text-property>
+                        </label>
+                    </cell>
+                </row>
+            </header>
+            <footer>
+                <row id="2697">
+                    <property name="color">white</property>
+                    <cell id="2698">
+                        <data name="NewData111" id="2699">
+                            <property name="backgroundColor">#FFF3E0</property>
+                            <property name="fontSize">20pt</property>
+                            <property name="color">#004080</property>
+                            <property name="textAlign">center</property>
+                            <property name="resultSetColumn">TotalRiskDoc</property>
+                        </data>
+                    </cell>
+                </row>
+            </footer>
+        </table>
+        <table name="NewTable41" id="2701">
+            <property name="borderBottomStyle">none</property>
+            <property name="borderLeftStyle">none</property>
+            <property name="borderRightStyle">none</property>
+            <property name="borderTopStyle">none</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">doc_id</property>
+                    <text-property name="displayName">Internal Document ID</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["doc_id"]</expression>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="name">TotalDocId</property>
+                    <property name="dataType">integer</property>
+                    <property name="aggregateFunction">COUNTDISTINCT</property>
+                    <list-property name="arguments">
+                        <structure>
+                            <property name="name">Expression</property>
+                            <expression name="value" type="javascript">row["doc_id"]</expression>
+                        </structure>
+                    </list-property>
+                    <property name="allowExport">true</property>
+                </structure>
+            </list-property>
+            <property name="linkedDataModel">dmDocument</property>
+            <property name="isSummaryTable">true</property>
+            <column id="2708"/>
+            <header>
+                <row id="2702">
+                    <cell id="2703">
+                        <label name="NewLabel61" id="2704">
+                            <property name="backgroundColor">#FFF3E0</property>
+                            <property name="fontFamily">"Calibri"</property>
+                            <text-property name="text">Total Documents</text-property>
+                        </label>
+                    </cell>
+                </row>
+            </header>
+            <footer>
+                <row id="2705">
+                    <property name="color">white</property>
+                    <cell id="2706">
+                        <property name="borderBottomStyle">none</property>
+                        <property name="borderLeftStyle">none</property>
+                        <property name="borderRightStyle">none</property>
+                        <property name="borderTopStyle">none</property>
+                        <data name="NewData61" id="2707">
+                            <property name="backgroundColor">#FFF3E0</property>
+                            <property name="fontSize">20pt</property>
+                            <property name="fontWeight">normal</property>
+                            <property name="color">#004080</property>
+                            <property name="textAlign">center</property>
+                            <property name="resultSetColumn">TotalDocId</property>
+                        </data>
+                    </cell>
+                </row>
+            </footer>
+        </table>
+        <text name="c0c41447-1009-478e-b3e8-ed608adb211d1" id="2709">
+            <text-property name="content"><![CDATA[<script src="..\help\jsapi\scripts\jquery-1.8.0.min.js"</script> 
+<script>
+var myCSS = '';
+myCSS +=  '<style type="text/css">';
+myCSS +=  '          .actuate-selector-panel .actuate-selector-list .actuate-list-item  {';
+myCSS +=  '                         font-size:12px !important;';
+myCSS +=  '         }';
+myCSS +=  '          .actuate-widget-panel-header.actuate-unselectable {';
+myCSS +=  '                          padding:5px 0 0 0';
+myCSS +=  '          }';
+//myCSS +=  '      .actuate-widget-panel-tr{';
+//myCSS +=  '                      height:35px';
+//myCSS +=  '      }';
+myCSS +=  '          .actuate-selector-panel-header .actuate-widget-tool {';
+myCSS +=  '                         font-size:12px !important;';
+myCSS +=  '          }';
+
+myCSS +=  ' .popup_close { right: 3px; position: absolute; top: 0; opacity: 0.5; font-size: 12px; font-weight: 800; color: #111;} ';
+myCSS +=  ' .popup_content {  display: none; position: absolute; top: 15%; left: 15%; width: 1200px; height: 750px; padding: 10px; border: 5px solid #B0B1BA; background-color: #e8e8e8; z-index:1002; overflow: scroll;}';
+
+myCSS +=  '</style>';
+
+$(window.parent.document.head).append(myCSS);
+$(window.parent.document).find(".actuate-widget-panel-tr").not(":eq(0)").css({"height": "35px"});
+
+$(window.parent.document).find(".actuate-widget-panel-header-text").filter(function() { return ($(this).text() === 'Current Selections') }).css({"color": "rgb(99, 99, 99)"}).css({"font-weight": "bold"}).css({"font-size": "10pt"});
+
+//debugger;
+$(window.parent.document.body).append ("<div id='popupDetail' class='popup_content'><span id='popupClose' class='popup_close' >&amp;#10006;</span></div></div>");
+debugger;
+
+$(window.parent.document.body).find(".popup_content").click ( function () { debugger; $(window.parent.document.body).find(".popup_content").hide(); $(window.parent.document.body).find(".popup_content").find("iframe").remove(); $(window.parent.document.body).find(".popupClose").hide(); }  );
+
+</script>]]></text-property>
+        </text>
+        <text name="135ebacd-b999-4f28-942d-e2ffb1f9f25a" id="3400">
+            <text-property name="content"><![CDATA[<script src="..\help\jsapi\scripts\jquery-1.8.0.min.js"</script> 
+<script>
+var myCSS = '';
+myCSS +=  '<style type="text/css">';
+myCSS +=  '          .actuate-selector-panel .actuate-selector-list .actuate-list-item  {';
+myCSS +=  '                         font-size:12px !important;';
+myCSS +=  '         }';
+myCSS +=  '          .actuate-widget-panel-header.actuate-unselectable {';
+myCSS +=  '                          padding:5px 0 0 0';
+myCSS +=  '          }';
+//myCSS +=  '      .actuate-widget-panel-tr{';
+//myCSS +=  '                      height:35px';
+//myCSS +=  '      }';
+myCSS +=  '          .actuate-selector-panel-header .actuate-widget-tool {';
+myCSS +=  '                         font-size:12px !important;';
+myCSS +=  '          }';
+
+myCSS +=  ' .popup_close { right: 3px; position: absolute; top: 0; opacity: 0.5; font-size: 12px; font-weight: 800; color: #111;} ';
+myCSS +=  ' .popup_content {  display: none; position: absolute; top: 15%; left: 15%; width:901px; height: 451px; padding: 10px; border: 5px solid #B0B1BA; background-color: #FFFFFF; z-index:1002; overflow: hidden;}';
+
+myCSS +=  '</style>';
+
+$(window.parent.document.head).append(myCSS);
+$(window.parent.document).find(".actuate-widget-panel-tr").not(":eq(0)").css({"height": "35px"});
+
+$(window.parent.document).find(".actuate-widget-panel-header-text").filter(function() { return ($(this).text() === 'Current Selections') }).css({"color": "rgb(99, 99, 99)"}).css({"font-weight": "bold"}).css({"font-size": "10pt"});
+
+//debugger;
+$(window.parent.document.body).append ("<div id='popupDetail' class='popup_content'><span id='popupClose' class='popup_close' >&amp;#10006;</span></div></div>");
+debugger;
+
+$(window.parent.document.body).find(".popup_content").click ( function () { debugger; $(window.parent.document.body).find(".popup_content").hide(); $(window.parent.document.body).find(".popup_content").find("iframe").remove(); $(window.parent.document.body).find(".popupClose").hide(); }  );
+
+</script>]]></text-property>
+        </text>
+        <text name="50216c70-bbc0-4185-9c3d-3fbd1a26a3f2" id="5012">
+            <text-property name="content"><![CDATA[<script src="..\help\jsapi\scripts\jquery-1.8.0.min.js"</script> 
+<script>
+var myCSS = '';
+myCSS +=  '<style type="text/css">';
+myCSS +=  '          .actuate-selector-panel .actuate-selector-list .actuate-list-item  {';
+myCSS +=  '                         font-size:12px !important;';
+myCSS +=  '         }';
+myCSS +=  '          .actuate-widget-panel-header.actuate-unselectable {';
+myCSS +=  '                          padding:5px 0 0 0';
+myCSS +=  '          }';
+//myCSS +=  '      .actuate-widget-panel-tr{';
+//myCSS +=  '                      height:35px';
+//myCSS +=  '      }';
+myCSS +=  '          .actuate-selector-panel-header .actuate-widget-tool {';
+myCSS +=  '                         font-size:12px !important;';
+myCSS +=  '          }';
+
+myCSS +=  ' .popup_close { right: 3px; position: absolute; top: 0; opacity: 0.5; font-size: 12px; font-weight: 800; color: #111;} ';
+myCSS +=  ' .popup_content {  display: none; position: absolute; top: 15%; left: 15%; width:681px; height: 451px; padding: 10px; border: 5px solid #B0B1BA; background-color: #FFFFFF; z-index:1002; overflow: hidden;}';
+
+myCSS +=  '</style>';
+
+$(window.parent.document.head).append(myCSS);
+$(window.parent.document).find(".actuate-widget-panel-tr").not(":eq(0)").css({"height": "35px"});
+
+$(window.parent.document).find(".actuate-widget-panel-header-text").filter(function() { return ($(this).text() === 'Current Selections') }).css({"color": "rgb(99, 99, 99)"}).css({"font-weight": "bold"}).css({"font-size": "10pt"});
+
+//debugger;
+$(window.parent.document.body).append ("<div id='popupDetail' class='popup_content'><span id='popupClose' class='popup_close' >&amp;#10006;</span></div></div>");
+debugger;
+
+$(window.parent.document.body).find(".popup_content").click ( function () { debugger; $(window.parent.document.body).find(".popup_content").hide(); $(window.parent.document.body).find(".popup_content").find("iframe").remove(); $(window.parent.document.body).find(".popupClose").hide(); }  );
+
+</script>]]></text-property>
+        </text>
+    </body>
+    <property name="dashboardView">
+        <dashboard id="2">
+            <property name="activeTab">cbe8c585-5c16-42d6-9446-e5f7bb6e4fbd</property>
+            <property name="tabs">
+                <tab-element name="773585a8-6ca7-4bc4-aa99-a717db81b2231" id="3126">
+                    <list-property name="userProperties">
+                        <structure>
+                            <property name="name">responsiveView</property>
+                            <property name="type">boolean</property>
+                        </structure>
+                    </list-property>
+                    <property name="responsiveView">true</property>
+                    <property name="title">Risk Assessment</property>
+                    <property name="backgroundColor">RGB(255,255,255)</property>
+                    <property name="freeFormGadgets">
+                        <gadget name="Gadget_f28914f5-2842-4589-b515-3079325a9438" id="4235">
+                            <property name="x">10px</property>
+                            <property name="y">0px</property>
+                            <property name="title">Reportlet - PIIReporting - Document</property>
+                            <property name="externalGadgetURI">^/Report Designs/PIIReporting.rptdesign</property>
+                            <property name="showTitle">false</property>
+                            <property name="showBorder">false</property>
+                            <property name="zIndex">9</property>
+                            <property name="showScrollBar">false</property>
+                            <property name="height">580px</property>
+                            <property name="width">300px</property>
+                            <property name="caption">
+                                <gadget-caption id="4236">
+                                    <property name="showCaption">false</property>
+                                    <property name="horizontalAlignment">left</property>
+                                    <property name="fontFamily">"Lato"</property>
+                                    <property name="fontSize">18pt</property>
+                                    <property name="fontWeight">normal</property>
+                                    <property name="fontStyle">normal</property>
+                                    <property name="color">#353535</property>
+                                    <property name="textUnderline">none</property>
+                                </gadget-caption>
+                            </property>
+                            <property name="content">
+                                <data-view id="4237">
+                                    <list-property name="userProperties">
+                                        <structure>
+                                            <property name="name">showViewerToolbar</property>
+                                            <property name="type">boolean</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="showViewerToolbar">false</property>
+                                    <property name="gadgetType">viewer</property>
+                                    <property name="externalContentRef">
+                                        <external-element-ref>
+                                            <property name="sourceFile">^/Report Designs/PIIReporting.rptdesign</property>
+                                            <property name="targetBookmark">Document</property>
+                                        </external-element-ref>
+                                    </property>
+                                </data-view>
+                            </property>
+                        </gadget>
+                        <gadget name="Gadget_891a8951-c157-45a5-9310-5a82df01acad" id="4995">
+                            <property name="x">324px</property>
+                            <property name="y">2px</property>
+                            <property name="title">Reportlet - PIIReporting - RiskLevel</property>
+                            <property name="externalGadgetURI">^/Report Designs/PIIReporting.rptdesign</property>
+                            <property name="showTitle">false</property>
+                            <property name="showBorder">false</property>
+                            <property name="zIndex">10</property>
+                            <property name="showScrollBar">false</property>
+                            <property name="height">99px</property>
+                            <property name="width">1170px</property>
+                            <property name="caption">
+                                <gadget-caption id="4997">
+                                    <property name="showCaption">false</property>
+                                    <property name="horizontalAlignment">left</property>
+                                    <property name="fontFamily">"Lato"</property>
+                                    <property name="fontSize">18pt</property>
+                                    <property name="fontWeight">normal</property>
+                                    <property name="fontStyle">normal</property>
+                                    <property name="color">#353535</property>
+                                    <property name="textUnderline">none</property>
+                                </gadget-caption>
+                            </property>
+                            <property name="content">
+                                <data-view id="4996">
+                                    <list-property name="userProperties">
+                                        <structure>
+                                            <property name="name">showViewerToolbar</property>
+                                            <property name="type">boolean</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="showViewerToolbar">false</property>
+                                    <property name="gadgetType">viewer</property>
+                                    <property name="externalContentRef">
+                                        <external-element-ref>
+                                            <property name="sourceFile">^/Report Designs/PIIReporting.rptdesign</property>
+                                            <property name="targetBookmark">RiskLevel</property>
+                                        </external-element-ref>
+                                    </property>
+                                </data-view>
+                            </property>
+                        </gadget>
+                        <gadget name="Gadget_82efe7fa-75e2-46a7-bc15-2634872e18b7" id="4998">
+                            <property name="x">324px</property>
+                            <property name="y">108px</property>
+                            <property name="title">Reportlet - PIIReporting - PII Icon</property>
+                            <property name="externalGadgetURI">^/Report Designs/PIIReporting.rptdesign</property>
+                            <property name="showTitle">false</property>
+                            <property name="showBorder">false</property>
+                            <property name="zIndex">6</property>
+                            <property name="showScrollBar">false</property>
+                            <property name="height">97px</property>
+                            <property name="width">1163px</property>
+                            <property name="caption">
+                                <gadget-caption id="5000">
+                                    <property name="showCaption">false</property>
+                                    <property name="horizontalAlignment">left</property>
+                                    <property name="fontFamily">"Lato"</property>
+                                    <property name="fontSize">18pt</property>
+                                    <property name="fontWeight">normal</property>
+                                    <property name="fontStyle">normal</property>
+                                    <property name="color">#353535</property>
+                                    <property name="textUnderline">none</property>
+                                </gadget-caption>
+                            </property>
+                            <property name="content">
+                                <data-view id="4999">
+                                    <list-property name="userProperties">
+                                        <structure>
+                                            <property name="name">showViewerToolbar</property>
+                                            <property name="type">boolean</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="showViewerToolbar">false</property>
+                                    <property name="gadgetType">viewer</property>
+                                    <property name="externalContentRef">
+                                        <external-element-ref>
+                                            <property name="sourceFile">^/Report Designs/PIIReporting.rptdesign</property>
+                                            <property name="targetBookmark">PII Icon</property>
+                                        </external-element-ref>
+                                    </property>
+                                </data-view>
+                            </property>
+                        </gadget>
+                        <gadget name="Gadget_d158c202-e612-4870-9f6d-80be1afe43b6" id="5001">
+                            <property name="x">324px</property>
+                            <property name="y">210px</property>
+                            <property name="title">Reportlet - PIIReporting - RiskPII</property>
+                            <property name="externalGadgetURI">^/Report Designs/PIIReporting.rptdesign</property>
+                            <property name="showTitle">true</property>
+                            <property name="showBorder">false</property>
+                            <property name="zIndex">0</property>
+                            <property name="showScrollBar">false</property>
+                            <property name="height">370px</property>
+                            <property name="width">742px</property>
+                            <property name="caption">
+                                <gadget-caption id="5003">
+                                    <property name="showCaption">false</property>
+                                    <property name="horizontalAlignment">left</property>
+                                    <property name="fontFamily">"Lato"</property>
+                                    <property name="fontSize">18pt</property>
+                                    <property name="fontWeight">normal</property>
+                                    <property name="fontStyle">normal</property>
+                                    <property name="color">#353535</property>
+                                    <property name="textUnderline">none</property>
+                                </gadget-caption>
+                            </property>
+                            <property name="content">
+                                <data-view id="5002">
+                                    <list-property name="userProperties">
+                                        <structure>
+                                            <property name="name">showViewerToolbar</property>
+                                            <property name="type">boolean</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="showViewerToolbar">false</property>
+                                    <property name="gadgetType">viewer</property>
+                                    <property name="externalContentRef">
+                                        <external-element-ref>
+                                            <property name="sourceFile">^/Report Designs/PIIReporting.rptdesign</property>
+                                            <property name="targetBookmark">RiskPII</property>
+                                        </external-element-ref>
+                                    </property>
+                                </data-view>
+                            </property>
+                        </gadget>
+                        <gadget name="6a395e96-04b3-4919-b5cc-dfb3a117cb671" id="3127">
+                            <property name="x">418px</property>
+                            <property name="y">640px</property>
+                            <property name="zIndex">2</property>
+                            <property name="isVisible">false</property>
+                            <property name="height">150px</property>
+                            <property name="width">832px</property>
+                            <property name="caption">
+                                <gadget-caption id="3129">
+                                    <property name="showCaption">true</property>
+                                    <property name="horizontalAlignment">left</property>
+                                    <property name="fontFamily">"Lato"</property>
+                                    <property name="fontSize">24pt</property>
+                                    <property name="fontWeight">bold</property>
+                                    <property name="color">#000000</property>
+                                </gadget-caption>
+                            </property>
+                            <property name="content">
+                                <current-selections id="3128"/>
+                            </property>
+                        </gadget>
+                        <gadget name="Gadget_f5763125-2380-4c5b-888c-0aaa736076bc" id="4238">
+                            <property name="x">1086px</property>
+                            <property name="y">213px</property>
+                            <property name="title">Reportlet - PIIReporting - RiskChart</property>
+                            <property name="externalGadgetURI">^/Report Designs/PIIReporting.rptdesign</property>
+                            <property name="showTitle">true</property>
+                            <property name="showBorder">false</property>
+                            <property name="zIndex">1</property>
+                            <property name="showScrollBar">false</property>
+                            <property name="height">362px</property>
+                            <property name="width">417px</property>
+                            <property name="caption">
+                                <gadget-caption id="4239">
+                                    <property name="showCaption">false</property>
+                                    <property name="horizontalAlignment">left</property>
+                                    <property name="fontFamily">"Lato"</property>
+                                    <property name="fontSize">18pt</property>
+                                    <property name="fontWeight">normal</property>
+                                    <property name="fontStyle">normal</property>
+                                    <property name="color">#353535</property>
+                                    <property name="textUnderline">none</property>
+                                </gadget-caption>
+                            </property>
+                            <property name="content">
+                                <data-view id="4240">
+                                    <list-property name="userProperties">
+                                        <structure>
+                                            <property name="name">showViewerToolbar</property>
+                                            <property name="type">boolean</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="showViewerToolbar">false</property>
+                                    <property name="gadgetType">viewer</property>
+                                    <property name="externalContentRef">
+                                        <external-element-ref>
+                                            <property name="sourceFile">^/Report Designs/PIIReporting.rptdesign</property>
+                                            <property name="targetBookmark">RiskChart</property>
+                                        </external-element-ref>
+                                    </property>
+                                </data-view>
+                            </property>
+                        </gadget>
+                    </property>
+                </tab-element>
+                <tab-element name="cbe8c585-5c16-42d6-9446-e5f7bb6e4fbd" id="4965">
+                    <list-property name="userProperties">
+                        <structure>
+                            <property name="name">responsiveView</property>
+                            <property name="type">boolean</property>
+                        </structure>
+                    </list-property>
+                    <property name="responsiveView">true</property>
+                    <property name="title">Document Analysis</property>
+                    <property name="backgroundColor">RGB(255,255,255)</property>
+                    <property name="freeFormGadgets">
+                        <gadget name="c1b0e327-4d11-4c05-8704-30e423a1d185" id="4968">
+                            <property name="x">10px</property>
+                            <property name="y">11px</property>
+                            <property name="zIndex">1</property>
+                            <property name="isVisible">false</property>
+                            <property name="height">150px</property>
+                            <property name="width">747px</property>
+                            <property name="caption">
+                                <gadget-caption id="4970">
+                                    <property name="showCaption">true</property>
+                                    <property name="horizontalAlignment">left</property>
+                                    <property name="fontFamily">"Lato"</property>
+                                    <property name="fontSize">24pt</property>
+                                    <property name="fontWeight">bold</property>
+                                    <property name="color">#000000</property>
+                                </gadget-caption>
+                            </property>
+                            <property name="content">
+                                <current-selections id="4969"/>
+                            </property>
+                            <property name="subscribeTo">
+                                <event-subscriber>
+                                    <property name="eventName">SELECT_EVENT:SEMANTIC_filter</property>
+                                    <property name="eventObjects">
+                                        <event-object>
+                                            <property name="gadget">Gadget_efdcc9d6-33ba-499f-b76c-64d996315e44</property>
+                                            <property name="dirty">false</property>
+                                        </event-object>
+                                        <event-object>
+                                            <property name="gadget">Gadget_b729c717-0890-4437-96ba-ba6bbf3e9d3d</property>
+                                            <property name="dirty">false</property>
+                                        </event-object>
+                                        <event-object>
+                                            <property name="gadget">Gadget_19c4b376-156b-4f12-92d2-bbdaef41b499</property>
+                                            <property name="dirty">false</property>
+                                        </event-object>
+                                        <event-object>
+                                            <property name="gadget">Gadget_9a7d7673-85ad-4907-9e56-1b4d4efa0f00</property>
+                                            <property name="dirty">false</property>
+                                        </event-object>
+                                        <event-object>
+                                            <property name="gadget">Gadget_698dde4c-3f84-4d00-b797-f5890f7bff06</property>
+                                            <property name="dirty">false</property>
+                                        </event-object>
+                                    </property>
+                                </event-subscriber>
+                            </property>
+                        </gadget>
+                        <gadget name="Gadget_efdcc9d6-33ba-499f-b76c-64d996315e44" id="4972">
+                            <property name="x">15px</property>
+                            <property name="y">0px</property>
+                            <property name="title">Device Name</property>
+                            <property name="showTitle">false</property>
+                            <property name="showBorder">false</property>
+                            <property name="zIndex">2</property>
+                            <property name="showScrollBar">false</property>
+                            <property name="height">158px</property>
+                            <property name="width">221px</property>
+                            <property name="caption">
+                                <gadget-caption id="4973">
+                                    <property name="showCaption">true</property>
+                                    <property name="horizontalAlignment">left</property>
+                                    <property name="fontFamily">"Lato"</property>
+                                    <property name="fontSize">12pt</property>
+                                    <property name="fontWeight">bold</property>
+                                    <property name="fontStyle">normal</property>
+                                    <property name="color">#FF6600</property>
+                                    <property name="textUnderline">none</property>
+                                </gadget-caption>
+                            </property>
+                            <property name="content">
+                                <list-data-selector id="4974">
+                                    <property name="linkedDataModel">Text Analytics DO::dmFinalDoc</property>
+                                    <property name="sortDirection">asc</property>
+                                    <simple-property-list name="columnNames">
+                                        <value>Device Name</value>
+                                        <value>Device Name</value>
+                                    </simple-property-list>
+                                    <property name="allowMultiValue">true</property>
+                                    <property name="enableSearch">true</property>
+                                    <property name="listLimit">1000</property>
+                                </list-data-selector>
+                            </property>
+                            <property name="observers">
+                                <event-subscriber>
+                                    <property name="eventName">SELECT_EVENT:SEMANTIC_filter</property>
+                                    <property name="eventObjects">
+                                        <event-object>
+                                            <property name="gadget">c1b0e327-4d11-4c05-8704-30e423a1d185</property>
+                                            <property name="dirty">false</property>
+                                        </event-object>
+                                    </property>
+                                </event-subscriber>
+                                <event-subscriber>
+                                    <property name="eventName">SELECT_EVENT:SEMANTIC_parameter</property>
+                                    <property name="eventObjects">
+                                        <event-object>
+                                            <property name="appliedTo">DeviceName</property>
+                                            <property name="gadget">Gadget_3aca6e16-4e80-4718-a39f-b2f5037b1552</property>
+                                            <property name="dirty">false</property>
+                                        </event-object>
+                                        <event-object>
+                                            <property name="appliedTo">DeviceName</property>
+                                            <property name="gadget">Gadget_5530780c-6852-4b89-b276-5351d366609d</property>
+                                            <property name="dirty">false</property>
+                                        </event-object>
+                                        <event-object>
+                                            <property name="appliedTo">DeviceName</property>
+                                            <property name="gadget">Gadget_70902a5f-b8c5-4835-a773-2b81cc1fb39b</property>
+                                            <property name="dirty">false</property>
+                                        </event-object>
+                                        <event-object>
+                                            <property name="appliedTo">DeviceName</property>
+                                            <property name="gadget">Gadget_54d91f3e-67aa-423c-b06d-3595b9792ecd</property>
+                                            <property name="dirty">false</property>
+                                        </event-object>
+                                    </property>
+                                </event-subscriber>
+                            </property>
+                        </gadget>
+                        <gadget name="Gadget_b729c717-0890-4437-96ba-ba6bbf3e9d3d" id="4979">
+                            <property name="x">508px</property>
+                            <property name="y">0px</property>
+                            <property name="title">Document Name</property>
+                            <property name="showTitle">false</property>
+                            <property name="showBorder">false</property>
+                            <property name="zIndex">4</property>
+                            <property name="showScrollBar">false</property>
+                            <property name="height">157px</property>
+                            <property name="width">356px</property>
+                            <property name="caption">
+                                <gadget-caption id="4980">
+                                    <property name="showCaption">true</property>
+                                    <property name="horizontalAlignment">left</property>
+                                    <property name="fontFamily">"Lato"</property>
+                                    <property name="fontSize">12pt</property>
+                                    <property name="fontWeight">bold</property>
+                                    <property name="fontStyle">normal</property>
+                                    <property name="color">#FF6600</property>
+                                    <property name="textUnderline">none</property>
+                                </gadget-caption>
+                            </property>
+                            <property name="content">
+                                <list-data-selector id="4981">
+                                    <property name="linkedDataModel">Text Analytics DO::dmFinalDoc</property>
+                                    <property name="sortDirection">asc</property>
+                                    <simple-property-list name="columnNames">
+                                        <value>name</value>
+                                        <value>name</value>
+                                    </simple-property-list>
+                                    <property name="allowMultiValue">true</property>
+                                    <property name="enableSearch">true</property>
+                                    <property name="listLimit">1000</property>
+                                </list-data-selector>
+                            </property>
+                            <property name="observers">
+                                <event-subscriber>
+                                    <property name="eventName">SELECT_EVENT:SEMANTIC_filter</property>
+                                    <property name="eventObjects">
+                                        <event-object>
+                                            <property name="gadget">c1b0e327-4d11-4c05-8704-30e423a1d185</property>
+                                            <property name="dirty">false</property>
+                                        </event-object>
+                                    </property>
+                                </event-subscriber>
+                                <event-subscriber>
+                                    <property name="eventName">SELECT_EVENT:SEMANTIC_parameter</property>
+                                    <property name="eventObjects">
+                                        <event-object>
+                                            <property name="appliedTo">FileName</property>
+                                            <property name="gadget">Gadget_3aca6e16-4e80-4718-a39f-b2f5037b1552</property>
+                                            <property name="dirty">false</property>
+                                        </event-object>
+                                        <event-object>
+                                            <property name="appliedTo">FileName</property>
+                                            <property name="gadget">Gadget_5530780c-6852-4b89-b276-5351d366609d</property>
+                                            <property name="dirty">false</property>
+                                        </event-object>
+                                        <event-object>
+                                            <property name="appliedTo">FileName</property>
+                                            <property name="gadget">Gadget_70902a5f-b8c5-4835-a773-2b81cc1fb39b</property>
+                                            <property name="dirty">false</property>
+                                        </event-object>
+                                        <event-object>
+                                            <property name="appliedTo">FileName</property>
+                                            <property name="gadget">Gadget_54d91f3e-67aa-423c-b06d-3595b9792ecd</property>
+                                            <property name="dirty">false</property>
+                                        </event-object>
+                                    </property>
+                                </event-subscriber>
+                            </property>
+                        </gadget>
+                        <gadget name="Gadget_19c4b376-156b-4f12-92d2-bbdaef41b499" id="4982">
+                            <property name="x">879px</property>
+                            <property name="y">0px</property>
+                            <property name="title">Risk Level</property>
+                            <property name="showTitle">false</property>
+                            <property name="showBorder">false</property>
+                            <property name="zIndex">5</property>
+                            <property name="showScrollBar">false</property>
+                            <property name="height">159px</property>
+                            <property name="width">241px</property>
+                            <property name="caption">
+                                <gadget-caption id="4983">
+                                    <property name="showCaption">true</property>
+                                    <property name="horizontalAlignment">left</property>
+                                    <property name="fontFamily">"Lato"</property>
+                                    <property name="fontSize">12pt</property>
+                                    <property name="fontWeight">bold</property>
+                                    <property name="fontStyle">normal</property>
+                                    <property name="color">#FF6600</property>
+                                    <property name="textUnderline">none</property>
+                                </gadget-caption>
+                            </property>
+                            <property name="content">
+                                <list-data-selector id="4984">
+                                    <property name="linkedDataModel">Text Analytics DO::dmFinalDoc</property>
+                                    <property name="sortDirection">asc</property>
+                                    <simple-property-list name="columnNames">
+                                        <value>maxrisklevel</value>
+                                        <value>maxrisklevel</value>
+                                    </simple-property-list>
+                                    <property name="allowMultiValue">true</property>
+                                    <property name="enableSearch">true</property>
+                                    <property name="listLimit">1000</property>
+                                </list-data-selector>
+                            </property>
+                            <property name="observers">
+                                <event-subscriber>
+                                    <property name="eventName">SELECT_EVENT:SEMANTIC_filter</property>
+                                    <property name="eventObjects">
+                                        <event-object>
+                                            <property name="gadget">c1b0e327-4d11-4c05-8704-30e423a1d185</property>
+                                            <property name="dirty">false</property>
+                                        </event-object>
+                                    </property>
+                                </event-subscriber>
+                                <event-subscriber>
+                                    <property name="eventName">SELECT_EVENT:SEMANTIC_parameter</property>
+                                    <property name="eventObjects">
+                                        <event-object>
+                                            <property name="appliedTo">RiskLevel</property>
+                                            <property name="gadget">Gadget_3aca6e16-4e80-4718-a39f-b2f5037b1552</property>
+                                            <property name="dirty">false</property>
+                                        </event-object>
+                                        <event-object>
+                                            <property name="appliedTo">RiskLevel</property>
+                                            <property name="gadget">Gadget_5530780c-6852-4b89-b276-5351d366609d</property>
+                                            <property name="dirty">false</property>
+                                        </event-object>
+                                        <event-object>
+                                            <property name="appliedTo">RiskLevel</property>
+                                            <property name="gadget">Gadget_70902a5f-b8c5-4835-a773-2b81cc1fb39b</property>
+                                            <property name="dirty">false</property>
+                                        </event-object>
+                                        <event-object>
+                                            <property name="appliedTo">RiskLevel</property>
+                                            <property name="gadget">Gadget_54d91f3e-67aa-423c-b06d-3595b9792ecd</property>
+                                            <property name="dirty">false</property>
+                                        </event-object>
+                                    </property>
+                                </event-subscriber>
+                            </property>
+                        </gadget>
+                        <gadget name="Gadget_9a7d7673-85ad-4907-9e56-1b4d4efa0f00" id="4985">
+                            <property name="x">1134px</property>
+                            <property name="y">0px</property>
+                            <property name="title">Personal Information Type</property>
+                            <property name="showTitle">false</property>
+                            <property name="showBorder">false</property>
+                            <property name="zIndex">6</property>
+                            <property name="showScrollBar">false</property>
+                            <property name="height">156px</property>
+                            <property name="width">244px</property>
+                            <property name="caption">
+                                <gadget-caption id="4986">
+                                    <property name="showCaption">true</property>
+                                    <property name="horizontalAlignment">left</property>
+                                    <property name="fontFamily">"Lato"</property>
+                                    <property name="fontSize">12pt</property>
+                                    <property name="fontWeight">bold</property>
+                                    <property name="fontStyle">normal</property>
+                                    <property name="color">#FF6600</property>
+                                    <property name="textUnderline">none</property>
+                                </gadget-caption>
+                            </property>
+                            <property name="content">
+                                <list-data-selector id="4987">
+                                    <property name="linkedDataModel">Text Analytics DO::dmFinalDoc</property>
+                                    <property name="sortDirection">asc</property>
+                                    <property name="operator">in</property>
+                                    <simple-property-list name="columnNames">
+                                        <value>cartridge</value>
+                                        <value>cartridge</value>
+                                    </simple-property-list>
+                                    <property name="allowMultiValue">true</property>
+                                    <property name="enableSearch">true</property>
+                                    <property name="listLimit">1000</property>
+                                </list-data-selector>
+                            </property>
+                            <property name="observers">
+                                <event-subscriber>
+                                    <property name="eventName">SELECT_EVENT:SEMANTIC_filter</property>
+                                    <property name="eventObjects">
+                                        <event-object>
+                                            <property name="gadget">c1b0e327-4d11-4c05-8704-30e423a1d185</property>
+                                            <property name="dirty">false</property>
+                                        </event-object>
+                                    </property>
+                                </event-subscriber>
+                                <event-subscriber>
+                                    <property name="eventName">SELECT_EVENT:SEMANTIC_parameter</property>
+                                    <property name="eventObjects">
+                                        <event-object>
+                                            <property name="appliedTo">Cart</property>
+                                            <property name="gadget">Gadget_3aca6e16-4e80-4718-a39f-b2f5037b1552</property>
+                                            <property name="dirty">false</property>
+                                        </event-object>
+                                        <event-object>
+                                            <property name="appliedTo">Cart</property>
+                                            <property name="gadget">Gadget_5530780c-6852-4b89-b276-5351d366609d</property>
+                                            <property name="dirty">false</property>
+                                        </event-object>
+                                        <event-object>
+                                            <property name="appliedTo">Cart</property>
+                                            <property name="gadget">Gadget_70902a5f-b8c5-4835-a773-2b81cc1fb39b</property>
+                                            <property name="dirty">false</property>
+                                        </event-object>
+                                        <event-object>
+                                            <property name="appliedTo">Cart</property>
+                                            <property name="gadget">Gadget_54d91f3e-67aa-423c-b06d-3595b9792ecd</property>
+                                            <property name="dirty">false</property>
+                                        </event-object>
+                                    </property>
+                                </event-subscriber>
+                            </property>
+                        </gadget>
+                        <gadget name="Gadget_698dde4c-3f84-4d00-b797-f5890f7bff06" id="5004">
+                            <property name="x">259px</property>
+                            <property name="y">0px</property>
+                            <property name="title">User Name</property>
+                            <property name="showTitle">false</property>
+                            <property name="showBorder">false</property>
+                            <property name="zIndex">9</property>
+                            <property name="showScrollBar">false</property>
+                            <property name="height">155px</property>
+                            <property name="width">236px</property>
+                            <property name="caption">
+                                <gadget-caption id="5005">
+                                    <property name="showCaption">true</property>
+                                    <property name="horizontalAlignment">left</property>
+                                    <property name="fontFamily">"Lato"</property>
+                                    <property name="fontSize">12pt</property>
+                                    <property name="fontWeight">bold</property>
+                                    <property name="fontStyle">normal</property>
+                                    <property name="color">#FF6600</property>
+                                    <property name="textUnderline">none</property>
+                                </gadget-caption>
+                            </property>
+                            <property name="content">
+                                <list-data-selector id="5006">
+                                    <property name="linkedDataModel">Text Analytics DO::dmFinalDoc</property>
+                                    <property name="sortDirection">asc</property>
+                                    <simple-property-list name="columnNames">
+                                        <value>Username</value>
+                                        <value>Username</value>
+                                    </simple-property-list>
+                                    <property name="allowMultiValue">true</property>
+                                    <property name="enableSearch">true</property>
+                                    <property name="listLimit">1000</property>
+                                </list-data-selector>
+                            </property>
+                            <property name="observers">
+                                <event-subscriber>
+                                    <property name="eventName">SELECT_EVENT:SEMANTIC_filter</property>
+                                    <property name="eventObjects">
+                                        <event-object>
+                                            <property name="gadget">c1b0e327-4d11-4c05-8704-30e423a1d185</property>
+                                            <property name="dirty">false</property>
+                                        </event-object>
+                                    </property>
+                                </event-subscriber>
+                                <event-subscriber>
+                                    <property name="eventName">SELECT_EVENT:SEMANTIC_parameter</property>
+                                    <property name="eventObjects">
+                                        <event-object>
+                                            <property name="appliedTo">UserName</property>
+                                            <property name="gadget">Gadget_3aca6e16-4e80-4718-a39f-b2f5037b1552</property>
+                                            <property name="dirty">false</property>
+                                        </event-object>
+                                        <event-object>
+                                            <property name="appliedTo">UserName</property>
+                                            <property name="gadget">Gadget_5530780c-6852-4b89-b276-5351d366609d</property>
+                                            <property name="dirty">false</property>
+                                        </event-object>
+                                        <event-object>
+                                            <property name="appliedTo">UserName</property>
+                                            <property name="gadget">Gadget_70902a5f-b8c5-4835-a773-2b81cc1fb39b</property>
+                                            <property name="dirty">false</property>
+                                        </event-object>
+                                        <event-object>
+                                            <property name="appliedTo">UserName</property>
+                                            <property name="gadget">Gadget_54d91f3e-67aa-423c-b06d-3595b9792ecd</property>
+                                            <property name="dirty">false</property>
+                                        </event-object>
+                                    </property>
+                                </event-subscriber>
+                            </property>
+                        </gadget>
+                        <gadget name="4f21143b-835c-452f-b848-a71c4a2936f4" id="5010">
+                            <property name="x">0px</property>
+                            <property name="y">234px</property>
+                            <property name="title">HTML Gadget 1</property>
+                            <property name="gadgetContentType">html</property>
+                            <property name="showTitle">false</property>
+                            <property name="showBorder">false</property>
+                            <property name="zIndex">11</property>
+                            <property name="showScrollBar">false</property>
+                            <property name="height">9px</property>
+                            <property name="width">52px</property>
+                            <property name="caption">
+                                <gadget-caption id="5011">
+                                    <property name="showCaption">true</property>
+                                    <property name="horizontalAlignment">left</property>
+                                    <property name="fontFamily">"Lato"</property>
+                                    <property name="fontSize">18pt</property>
+                                    <property name="fontWeight">normal</property>
+                                    <property name="fontStyle">normal</property>
+                                    <property name="color">#FFFFFF</property>
+                                    <property name="textUnderline">none</property>
+                                </gadget-caption>
+                            </property>
+                            <property name="content">
+                                <data-view id="5013">
+                                    <property name="gadgetType">embedded</property>
+                                    <property name="internalReportLetRef">50216c70-bbc0-4185-9c3d-3fbd1a26a3f2</property>
+                                </data-view>
+                            </property>
+                        </gadget>
+                        <gadget name="Gadget_5530780c-6852-4b89-b276-5351d366609d" id="5014">
+                            <property name="x">108px</property>
+                            <property name="y">198px</property>
+                            <property name="title">Document Detail</property>
+                            <property name="externalGadgetURI">^/Report Designs/DocDetail.rptdesign</property>
+                            <property name="showTitle">false</property>
+                            <property name="showBorder">false</property>
+                            <property name="zIndex">12</property>
+                            <property name="showScrollBar">true</property>
+                            <property name="height">193px</property>
+                            <property name="width">639px</property>
+                            <property name="caption">
+                                <gadget-caption id="5015">
+                                    <property name="showCaption">true</property>
+                                    <property name="horizontalAlignment">left</property>
+                                    <property name="fontFamily">"Lato"</property>
+                                    <property name="fontSize">12pt</property>
+                                    <property name="fontWeight">bold</property>
+                                    <property name="fontStyle">normal</property>
+                                    <property name="color">#FF9900</property>
+                                    <property name="textUnderline">none</property>
+                                </gadget-caption>
+                            </property>
+                            <property name="content">
+                                <data-view id="5016">
+                                    <list-property name="userProperties">
+                                        <structure>
+                                            <property name="name">showViewerToolbar</property>
+                                            <property name="type">boolean</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="showViewerToolbar">false</property>
+                                    <property name="gadgetType">viewer</property>
+                                    <property name="externalContentRef">
+                                        <external-element-ref>
+                                            <property name="sourceFile">^/Report Designs/DocDetail.rptdesign</property>
+                                        </external-element-ref>
+                                    </property>
+                                    <property name="paramSettings">
+                                        <param-setting>
+                                            <property name="paramName">DeviceName</property>
+                                            <property name="displayText">null</property>
+                                            <expression name="value"></expression>
+                                            <property name="isHidden">true</property>
+                                            <expression name="defaultValue" type="javascript"></expression>
+                                        </param-setting>
+                                        <param-setting>
+                                            <property name="paramName">UserName</property>
+                                            <property name="displayText">null</property>
+                                            <expression name="value"></expression>
+                                            <property name="isHidden">true</property>
+                                            <expression name="defaultValue" type="javascript"></expression>
+                                        </param-setting>
+                                        <param-setting>
+                                            <property name="paramName">FileName</property>
+                                            <property name="displayText">null</property>
+                                            <expression name="value"></expression>
+                                            <property name="isHidden">true</property>
+                                            <expression name="defaultValue" type="javascript"></expression>
+                                        </param-setting>
+                                        <param-setting>
+                                            <property name="paramName">RiskLevel</property>
+                                            <property name="displayText">null</property>
+                                            <expression name="value"></expression>
+                                            <property name="isHidden">true</property>
+                                            <expression name="defaultValue" type="javascript"></expression>
+                                        </param-setting>
+                                        <param-setting>
+                                            <property name="paramName">Cart</property>
+                                            <property name="displayText">null</property>
+                                            <expression name="value"></expression>
+                                            <property name="isHidden">true</property>
+                                            <expression name="defaultValue" type="javascript"></expression>
+                                        </param-setting>
+                                    </property>
+                                </data-view>
+                            </property>
+                            <property name="subscribeTo">
+                                <event-subscriber>
+                                    <property name="eventName">SELECT_EVENT:SEMANTIC_parameter</property>
+                                    <property name="eventObjects">
+                                        <event-object>
+                                            <property name="appliedTo">DeviceName</property>
+                                            <property name="gadget">Gadget_efdcc9d6-33ba-499f-b76c-64d996315e44</property>
+                                            <property name="dirty">false</property>
+                                        </event-object>
+                                        <event-object>
+                                            <property name="appliedTo">UserName</property>
+                                            <property name="gadget">Gadget_698dde4c-3f84-4d00-b797-f5890f7bff06</property>
+                                            <property name="dirty">false</property>
+                                        </event-object>
+                                        <event-object>
+                                            <property name="appliedTo">FileName</property>
+                                            <property name="gadget">Gadget_b729c717-0890-4437-96ba-ba6bbf3e9d3d</property>
+                                            <property name="dirty">false</property>
+                                        </event-object>
+                                        <event-object>
+                                            <property name="appliedTo">RiskLevel</property>
+                                            <property name="gadget">Gadget_19c4b376-156b-4f12-92d2-bbdaef41b499</property>
+                                            <property name="dirty">false</property>
+                                        </event-object>
+                                        <event-object>
+                                            <property name="appliedTo">Cart</property>
+                                            <property name="gadget">Gadget_9a7d7673-85ad-4907-9e56-1b4d4efa0f00</property>
+                                            <property name="dirty">false</property>
+                                        </event-object>
+                                    </property>
+                                </event-subscriber>
+                            </property>
+                        </gadget>
+                        <gadget name="Gadget_70902a5f-b8c5-4835-a773-2b81cc1fb39b" id="5017">
+                            <property name="x">774px</property>
+                            <property name="y">198px</property>
+                            <property name="title">Sensitive Information Detail</property>
+                            <property name="externalGadgetURI">^/Report Designs/DocTermDetail.rptdesign</property>
+                            <property name="showTitle">false</property>
+                            <property name="showBorder">false</property>
+                            <property name="zIndex">13</property>
+                            <property name="showScrollBar">true</property>
+                            <property name="height">192px</property>
+                            <property name="width">618px</property>
+                            <property name="caption">
+                                <gadget-caption id="5018">
+                                    <property name="showCaption">true</property>
+                                    <property name="horizontalAlignment">left</property>
+                                    <property name="fontFamily">"Lato"</property>
+                                    <property name="fontSize">12pt</property>
+                                    <property name="fontWeight">bold</property>
+                                    <property name="fontStyle">normal</property>
+                                    <property name="color">#FF6600</property>
+                                    <property name="textUnderline">none</property>
+                                </gadget-caption>
+                            </property>
+                            <property name="content">
+                                <data-view id="5019">
+                                    <list-property name="userProperties">
+                                        <structure>
+                                            <property name="name">showViewerToolbar</property>
+                                            <property name="type">boolean</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="showViewerToolbar">false</property>
+                                    <property name="gadgetType">viewer</property>
+                                    <property name="externalContentRef">
+                                        <external-element-ref>
+                                            <property name="sourceFile">^/Report Designs/DocTermDetail.rptdesign</property>
+                                        </external-element-ref>
+                                    </property>
+                                    <property name="paramSettings">
+                                        <param-setting>
+                                            <property name="paramName">DeviceName</property>
+                                            <property name="displayText">null</property>
+                                            <expression name="value"></expression>
+                                            <property name="isHidden">true</property>
+                                            <expression name="defaultValue" type="javascript"></expression>
+                                        </param-setting>
+                                        <param-setting>
+                                            <property name="paramName">UserName</property>
+                                            <property name="displayText">null</property>
+                                            <expression name="value"></expression>
+                                            <property name="isHidden">true</property>
+                                            <expression name="defaultValue" type="javascript"></expression>
+                                        </param-setting>
+                                        <param-setting>
+                                            <property name="paramName">FileName</property>
+                                            <property name="displayText">null</property>
+                                            <expression name="value"></expression>
+                                            <property name="isHidden">true</property>
+                                            <expression name="defaultValue" type="javascript"></expression>
+                                        </param-setting>
+                                        <param-setting>
+                                            <property name="paramName">RiskLevel</property>
+                                            <property name="displayText">null</property>
+                                            <expression name="value"></expression>
+                                            <property name="isHidden">true</property>
+                                            <expression name="defaultValue" type="javascript"></expression>
+                                        </param-setting>
+                                        <param-setting>
+                                            <property name="paramName">Cart</property>
+                                            <property name="displayText">null</property>
+                                            <expression name="value"></expression>
+                                            <property name="isHidden">true</property>
+                                            <expression name="defaultValue" type="javascript"></expression>
+                                        </param-setting>
+                                    </property>
+                                </data-view>
+                            </property>
+                            <property name="subscribeTo">
+                                <event-subscriber>
+                                    <property name="eventName">SELECT_EVENT:SEMANTIC_parameter</property>
+                                    <property name="eventObjects">
+                                        <event-object>
+                                            <property name="appliedTo">DeviceName</property>
+                                            <property name="gadget">Gadget_efdcc9d6-33ba-499f-b76c-64d996315e44</property>
+                                            <property name="dirty">false</property>
+                                        </event-object>
+                                        <event-object>
+                                            <property name="appliedTo">UserName</property>
+                                            <property name="gadget">Gadget_698dde4c-3f84-4d00-b797-f5890f7bff06</property>
+                                            <property name="dirty">false</property>
+                                        </event-object>
+                                        <event-object>
+                                            <property name="appliedTo">FileName</property>
+                                            <property name="gadget">Gadget_b729c717-0890-4437-96ba-ba6bbf3e9d3d</property>
+                                            <property name="dirty">false</property>
+                                        </event-object>
+                                        <event-object>
+                                            <property name="appliedTo">RiskLevel</property>
+                                            <property name="gadget">Gadget_19c4b376-156b-4f12-92d2-bbdaef41b499</property>
+                                            <property name="dirty">false</property>
+                                        </event-object>
+                                        <event-object>
+                                            <property name="appliedTo">Cart</property>
+                                            <property name="gadget">Gadget_9a7d7673-85ad-4907-9e56-1b4d4efa0f00</property>
+                                            <property name="dirty">false</property>
+                                        </event-object>
+                                    </property>
+                                </event-subscriber>
+                            </property>
+                        </gadget>
+                        <gadget name="Gadget_54d91f3e-67aa-423c-b06d-3595b9792ecd" id="5020">
+                            <property name="x">18px</property>
+                            <property name="y">432px</property>
+                            <property name="title">End Point : Not Encryption</property>
+                            <property name="externalGadgetURI">^/Report Designs/Encryption.rptdesign</property>
+                            <property name="showTitle">false</property>
+                            <property name="showBorder">false</property>
+                            <property name="zIndex">14</property>
+                            <property name="showScrollBar">true</property>
+                            <property name="height">224px</property>
+                            <property name="width">1470px</property>
+                            <property name="caption">
+                                <gadget-caption id="5021">
+                                    <property name="showCaption">true</property>
+                                    <property name="horizontalAlignment">left</property>
+                                    <property name="fontFamily">"Lato"</property>
+                                    <property name="fontSize">12pt</property>
+                                    <property name="fontWeight">bold</property>
+                                    <property name="fontStyle">normal</property>
+                                    <property name="color">#FF6600</property>
+                                    <property name="textUnderline">none</property>
+                                </gadget-caption>
+                            </property>
+                            <property name="content">
+                                <data-view id="5022">
+                                    <list-property name="userProperties">
+                                        <structure>
+                                            <property name="name">showViewerToolbar</property>
+                                            <property name="type">boolean</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="showViewerToolbar">false</property>
+                                    <property name="gadgetType">viewer</property>
+                                    <property name="externalContentRef">
+                                        <external-element-ref>
+                                            <property name="sourceFile">/Applications/EnCase Data Risk/Report Designs/Encryption.rptdesign</property>
+                                        </external-element-ref>
+                                    </property>
+                                    <property name="paramSettings">
+                                        <param-setting>
+                                            <property name="paramName">DeviceName</property>
+                                            <property name="displayText">null</property>
+                                            <expression name="value"></expression>
+                                            <property name="isHidden">true</property>
+                                            <expression name="defaultValue" type="javascript"></expression>
+                                        </param-setting>
+                                        <param-setting>
+                                            <property name="paramName">UserName</property>
+                                            <property name="displayText">null</property>
+                                            <expression name="value"></expression>
+                                            <property name="isHidden">true</property>
+                                            <expression name="defaultValue" type="javascript"></expression>
+                                        </param-setting>
+                                        <param-setting>
+                                            <property name="paramName">FileName</property>
+                                            <property name="displayText">null</property>
+                                            <expression name="value"></expression>
+                                            <property name="isHidden">true</property>
+                                            <expression name="defaultValue" type="javascript"></expression>
+                                        </param-setting>
+                                        <param-setting>
+                                            <property name="paramName">RiskLevel</property>
+                                            <property name="displayText">null</property>
+                                            <expression name="value"></expression>
+                                            <property name="isHidden">true</property>
+                                            <expression name="defaultValue" type="javascript"></expression>
+                                        </param-setting>
+                                        <param-setting>
+                                            <property name="paramName">Cart</property>
+                                            <property name="displayText">null</property>
+                                            <expression name="value"></expression>
+                                            <property name="isHidden">true</property>
+                                            <expression name="defaultValue" type="javascript"></expression>
+                                        </param-setting>
+                                    </property>
+                                </data-view>
+                            </property>
+                            <property name="subscribeTo">
+                                <event-subscriber>
+                                    <property name="eventName">SELECT_EVENT:SEMANTIC_parameter</property>
+                                    <property name="eventObjects">
+                                        <event-object>
+                                            <property name="appliedTo">DeviceName</property>
+                                            <property name="gadget">Gadget_efdcc9d6-33ba-499f-b76c-64d996315e44</property>
+                                            <property name="dirty">false</property>
+                                        </event-object>
+                                        <event-object>
+                                            <property name="appliedTo">UserName</property>
+                                            <property name="gadget">Gadget_698dde4c-3f84-4d00-b797-f5890f7bff06</property>
+                                            <property name="dirty">false</property>
+                                        </event-object>
+                                        <event-object>
+                                            <property name="appliedTo">FileName</property>
+                                            <property name="gadget">Gadget_b729c717-0890-4437-96ba-ba6bbf3e9d3d</property>
+                                            <property name="dirty">false</property>
+                                        </event-object>
+                                        <event-object>
+                                            <property name="appliedTo">RiskLevel</property>
+                                            <property name="gadget">Gadget_19c4b376-156b-4f12-92d2-bbdaef41b499</property>
+                                            <property name="dirty">false</property>
+                                        </event-object>
+                                        <event-object>
+                                            <property name="appliedTo">Cart</property>
+                                            <property name="gadget">Gadget_9a7d7673-85ad-4907-9e56-1b4d4efa0f00</property>
+                                            <property name="dirty">false</property>
+                                        </event-object>
+                                    </property>
+                                </event-subscriber>
+                            </property>
+                        </gadget>
+                    </property>
+                </tab-element>
+            </property>
+        </dashboard>
+    </property>
+    <list-property name="images">
+        <structure>
+            <property name="name">images (2).jpg</property>
+            <property name="data">
+                /9j/4AAQSkZJRgABAQEAeAB4AAD/4QAiRXhpZgAATU0AKgAAAAgAAQESAAMAAAABAAEAAAAAAAD/2wBD
+                AAIBAQIBAQICAgICAgICAwUDAwMDAwYEBAMFBwYHBwcGBwcICQsJCAgKCAcHCg0KCgsMDAwMBwkODw0M
+                DgsMDAz/2wBDAQICAgMDAwYDAwYMCAcIDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwM
+                DAwMDAwMDAwMDAwMDAz/wAARCAA5ADkDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQF
+                BgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAk
+                M2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWG
+                h4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx
+                8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQA
+                AQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5
+                OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmq
+                srO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD9
+                /CcCvnD9sr/gpL4R/ZSnk0W3jPijxkY940u2mCR2efum5lwRHnqEAZyOdoBBpn/BSn9s2T9lL4TQ2uhy
+                Q/8ACZeKN9vpu/5vsUagebdFe+wMoUHguy5yFIP5p/sl6BafFT9rjwXZeJY/7et9b1ky6it8xnOoOUkl
+                YzFiTJucAtuzu5zkE1+V8bcdVcJjaeR5U19YqOKcnqoczSWnV6p6ppLo76ftPh74b0cbl9XiPOk/qtKM
+                5KEdHU5E3LXS0dGtGm3fVJa9Z8W/+Clvxm+Lt7K0niqTw3ZyH5bLQI/sccYwBjzMtM2cZJMh5JwAOK8x
+                b49eP3uPObx747M39/8A4SG93f8Aoyv068deHv2O/gxrq6D40k/Z58K+IIoI7iXT9ZutKsbtEkBKOYpW
+                VwrYOCRggcVj/wDCZ/sIf9DN+yz/AODrRP8A45XzWL8LuIsTUdSvmHM+7c/w7eiPssB4ycK4SkqWFyxw
+                j2Uaa+/XX1dz4d+Fn/BRL4yfCS9iks/GmoaxbxEZs9c/4mEEgBztYufNAPcpIre4r71/Yx/4KmeGP2kd
+                Ss/DfiK3j8JeMrr93BC0hex1N/7sEp5Vz2jfDHOFL4OJ7f4Pfsv/AB0+EXjC/wDh3pPwa8WJpNhcR3F5
+                4ZawvW0+YwM6ZltyTFJjDKchhwR61+PPh7xjHqGnW/2z91K0asXH3WOBz/s/56V5WMxfEPBVeiquI+sU
+                53vBuTVla9m9Y76W07pnrYHBcKeIGHrujhnhqtNpc6UU7yTtdR0ktNVLW20k9T+iqivkP/glX+2/dftC
+                eC5/Bviq++1eMPDUCyQ3csm6TWLLhRKx6tKjYVzzuDRuSSzY+vK/eMjznDZrgoY7Cu8ZL5p9U/NPT8tD
+                +auIuH8XkuYVMtxq9+D3WzT1Ul5Na9+js00fjL/wUf8Ai5N8Yv2xvF100hktNBmGg2S8bY4rYsHA47zN
+                M3PPzegAGP8AsG/8nm/Dj/sKn/0RLXDfF6WWf4weMJJ8/aJNf1Bpc9d5upS365ruf2DP+Tzvhv8A9hY/
+                +iJa/kjB4upiuKKeIqbyrxf31F+Wx/cmYYGnguDq2EpL3YYacV8qTV/nu/M/RD9pG++JEfxQf/hGb39o
+                6HSTY25RPBz/AA9Gkh9p3bf7aH23f03bvkzjZxmuD/tP4zf9BL9sr/v58If8KsftYfCe38a/GKS+k8A6
+                P4gb7BbQ/bbn4L2/iqR9qkbftz3EbNj+5twnTJrzX/hnuz/6JP4b/wDEabT/AOTK/tCUbSaP8/6bTimf
+                TXwVuPF1x8DPiF/wl1x8XLicWk/2Y+PG8KtOqfZmz5H9gfu/Lz18/wCfd935a/DXSv8AkF23/XJf5Cv2
+                r/ZW8DweCfgH8TEt/DWm+G1uIJiUsvh7D4PWdltXUkxxzSicggrvJBXG3FfippX/ACC7b/rkv8hX4J4z
+                fxcL6T/9tP6S8B1ahjk/5qf5TPVv2OPjle/s9/tL+CvEtvPJHa2eqRQ3sYwVltZj5M64PH+rdiPRlU9V
+                Ffvt58P/AD0j/wC+q/m11ORotOuGTIdY2Kkdc44r97P7Qvv7jf8AfVa+EOYThQxOHesU4yXrJNP/ANJR
+                z+OGWRqV8JiVpJqcX6RcWl8nKX3n5Z/t6/DCf4SftfeOtNliaOG91J9XtSRgSQ3RMwYeo3s65HGUYdQR
+                Uf7Bn/J53w3/AOwsf/REtfen/BWT9jW6+O/w+tfGvhmx+1eK/CULJPBEP32pWGSzxqP4niYtIi9w0gHz
+                MAfzr/Za+Jem/CT9obwZ4q1b7QdJ0fUFuLloI/MkWNkdCwXq2N4JA5IBwCcA/BZ9kjyTiynKt7tKVWNS
+                Mnty86b1/u7P5PZo/UeGeIY8RcE1oYf3q8aE6UorV8/s3Faf39GvNtbpn3Z+1x4b0vUvjdcTXmj6LezN
+                Y2ytNdfCPxb4mkwA2B9s011tWx2RRvTo3Jr5i/bMk1D4ffs++INR8G+BvD15dx2czXepL8HfGPh5tBt1
+                jLPdJcXpkg8xQML5mxVJ3lwFwfrG6/4K6/BHTTtm1rxJFzgE+Hrrafx24ryP9un/AIKs/Bz4h/sbfE7w
+                1pGseJLrVPE3hu90myjOg3SRmeeFo497FcIm5gCx4Gcniv6WxfEmS1qUo0MbDmadrTjdvolrv079tT+W
+                eHOEeIMPmeGeKy2o4KceZTpz5bXV+bRaLd3du91dHln/AAQa8fePX+EfxQ0ePTrfWPAL6e8l7qU9+Be6
+                TfNZyuuFclpopQOQOVc7udz18YaV/wAgu2/65L/IV9G/8EjP2xvBH7MX7PXxS0zxRcakupeIkhbTba0s
+                Xn+0EWUse0uPkQl2A+dgO5IGSPnWziNtZRRtjMaBSR04Ffz7x5iqNTC4OnGpzTip8yvdx1Vk+2iur9PK
+                x/XdDCVaPE+az+r+ypydDlaTSqP2d5z10b5pWk42TerXNzN9z+zj8Krj45fH7wb4RtY2mk1/V4LeRVUt
+                thDeZO5A52rCkjt6KpPav6CP+Eesf+faP8q+Af8Agif+xBdeC9Lk+L/iixa31DWrUweGreVcPDZOAXuy
+                Oxm4CcZ8sFukuB+hVfp/hfw/PA5Y8RiFadZp2fSKXu39bt+jR/NnjBxNTzHNo4TDSvCgnFtbObfvW9LJ
+                eqYda+MP23f+CTmn/GnW77xZ8P7iz8P+JrxnnvtPnBXT9UlJLGQFQTDKxJ3EAqx5KhtzH7Por7XO8hwO
+                bYb6rj4c0d10afdPdP8A4Z6HwHDvE2Y5Hi1jMtqOEtmt1JdpJ6NflurPU/Cf4rfs5+Pfgfey2vi3wjrm
+                i7eDLJB51q4xnKzx7omHI6McdDggivM7vTNLufmjuIbdx/FHKo/Mf/qr+hbXP+QLdf7hr5x1b/kp8f8A
+                vCvw/N/CGlhqieHxTUZPZxTa9WpJP7kf0VkfjlUxtJrGYKLlFXbjNpP0TjJr/wACZ+SHgH9mjx98Y9Ti
+                tfCPhjWvFEkzBUa0tz5S5IALyvtiRckZZnCjuQOa+/f2Hf8AgihB4Q1Sx8VfGBrHVr63Imt/DEBE1jE/
+                UG6fGJyOP3a/u85yZBxX314R/wCRcg+lalfb8N+F+XYCUa+Kl7aa1V0lFf8Abt3f5tryPznirxgzPMIS
+                wuBgsPB3Ts3KbXbmsrL0SfmAGP8APWiiiv1E/HT/2Q==
+</property>
+        </structure>
+        <structure>
+            <property name="name">images (3).jpg</property>
+            <property name="data">
+                /9j/4AAQSkZJRgABAQEAeAB4AAD/4QAiRXhpZgAATU0AKgAAAAgAAQESAAMAAAABAAEAAAAAAAD/2wBD
+                AAIBAQIBAQICAgICAgICAwUDAwMDAwYEBAMFBwYHBwcGBwcICQsJCAgKCAcHCg0KCgsMDAwMBwkODw0M
+                DgsMDAz/2wBDAQICAgMDAwYDAwYMCAcIDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwM
+                DAwMDAwMDAwMDAwMDAz/wAARCAA5ADkDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQF
+                BgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAk
+                M2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWG
+                h4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx
+                8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQA
+                AQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5
+                OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmq
+                srO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD9
+                /K+cP2sf+Ch+ifAi5udC8O28PiTxVCTHMpfFlpzekrLy7g4/dpg9QzIcZt/t+ftPT/BXwRDoOh3DQeJv
+                EEbYmQ/Pp9t91pR3DsflQ9iHbOUwfzf1bkdyScknkk8V+JeI3iXUy7EPKcqa9ql789+W+0Utua2rb0Sd
+                t/h/cPDHw1o5pBZpmqbpX92G3NbdtrXlvokrNtdt+n+MX7Y3xO+LF5K2qeMdYt7dyQLPTZ2sLVVJ+6Ui
+                K7wPWQsfevEta1G4nu/PkuLh5uvmNIxft3zmu+T4caprOgW+tNFHY6DdaxDof9qXbiK1juZQ74LH+FER
+                mdgCEGM4JAPaah+w3ayn/kuX7P6/73i4D0/6Z1+WYOjmmYy9tVcpve8pa67Ncz206H9OYPGZJlEFQgo0
+                1qrQhppa6fInZ6631PKfAf7YHxS+DF9HN4c8eeJbNISdtrPeNeWeOM/uJt8XPTIXPoRX3B+xn/wWi0X4
+                k6taeGfipb2HhXWrplitdbtyV0q7cnAWUMSbZjkYYs0ZOctH8qn5gh/4J1Xni/UY9P0H4xfAXXtauiVs
+                9NsvFvmXV64Bby41ERJYgHA/MgZNfK3i7SbnRNUvNPvreS1vLGWS2uYJB80MiMVdG9wwIP0r9ByfMs2y
+                lxlJvkfRu8Xa11u7P0s/kZ5hwfwhxlTnh+WPtopPnhHkqRvezd0nKN01aScd7Weq/o2or87P+CKX7fF1
+                41Rvg14vv5LnUtMtjP4XvJ5N0lzaxjMlkxJyzRL88fUmIOOBEN36J1+4ZZmFPG4eOIpdd12fVf101P4i
+                414QxvDObVMqxurjrGS2nF/DJevVdGmt0fl/+1t8QJfiX8ffFGpPJvhhvXsbUZyqwwMYl2+gbaXx6ua8
+                c1JPNZV6b2C59M4FdV4ikklvJmkz5jSMXz/eLHP61y95/wAfMP8A10X+Yr+DJY2pjcZUxdb4qkpSfrJ3
+                f5n9n5HhYYXC08NS+GEVFeiSR3/7Sk+v+C/GjfB/xl47tY/CnguSGW1lh0SNLeGVrRZEIjhQSFitwyks
+                xySzHJOa8n1Twf8ADwn5vipar/3Ll2f619F/tUR6tL/wUg8YLodx42tdQ222yTwnam51QD+y7XOxBJHl
+                f7x3cDsagvrL4pfw65+2D/wDw4//AMnV+xf2Z7TG4iHK5qnUnCLfNJqMJWjG7qx0SSS0+fbxcnzxYfL8
+                JNVFTlVpU6klHkgnKcVKUuVYeorybbevy7+H/slaZoulft0/C+LQvEEfiWzbWYHa6SyktAknz5j2ScnA
+                Cnd0O7HY14v+07/ycJ8QP+xn1X/0slr6aivNT+F3x/8A+Fn+Nrr4qaovww0+x1JbTxdYfZNY1B57uW3t
+                4U3zSiOzEjSMZiThg6BCzg188/tZaPaj4lDxNp81zJpXxGtpPF1lFdRiO4s47q7uVeCTBKsUmhlCuvDx
+                +W+F3bR7EaPs8J7K1mpuVv7rSje15faTW7f4H6Fw1jPb52sTdyjKjGHNunNSlUcbqMFfknGXwxTT01TS
+                87+G3xY1D4EfFrw7400ov9v8LajBqUaK23zxGwLxE/3ZE3Rt6q5Hev39/wCGqPh//wBDNYf+Pf4V/O7r
+                YB3Z6d/yrsf+E58bf3778zX2HDucTwVOUUuZO3y/4f8AQz8UvCfC8XywtepV9lOkpK+l5JuLS1/lfM1/
+                iZ9yftL+CZPh18bvFWjyJ5a2+oyywD/pjK3mxf8AkN1z7g15j9jm1HVbO3t4Zri4uJ44oookLySuzKFV
+                VHLMSQABySa++P8AgpF+zfP428NReONFt2m1LQ4PJ1KCNSWntASwkA7tESxIxyjMc/IAfh74f/Ea8+En
+                xF0TxPp8VvcXWi3S3McU4zHLxgqfTKkjI5BIPavwHijhl5LxBPCV7xpSlzRklf3JSvp3cdU1pquzR+Z8
+                DcQ/2rkkcTh7SqxjyuLdvfitm+ik7NPWyfdM7b/goQbLRP25/GVxrmgtrGn3C2UiWss8lotwv9n26CRZ
+                FGSqujjIyCUYdQa8U1Pxj8Ow3zfCu1b/ALmS7Hp/s1698ev20rj40fH7QfGuqeDfDtxY+HYPs0OhX5N7
+                a3SHfu85iq7zufcvyhVKLw3zbvFrr4m29r4H8WaKfCvhd5vE93DdQ6ibUm70RY5fMMNoxJMcbcIRnOzI
+                JbIx9JjMZhauYYjEYWpGUJ1KklzU03r7y+KLaTbcVta12lc+q4Vy/G0crwmGxdKcZ06dKD5a0opWfJLS
+                M0m4xSm2r3vyxbsM+Gni+xX48aMvhjUrP4O6Xqqf2XqN9PM+q2ccTktI1xHMNssbYjHlSDy9yIxK4LL5
+                V8bfEd/4q+I+tXmpa83ii4W6kt11UKVjvYoj5cTxoQPLiMarsjCqEXaoAxivSrz472MHjLwHqzfD/wAD
+                yQ+C7KGyubE2OLfxIY8gz3i5xJK2QSxBywydwwo8i8eauviHxJqWoR2NjpkeoXU10tnZRmO2sxI5cRRK
+                SSsaZ2qCSQqgZNe1QrRdL2cZX96+iaWy+zpFa3Wiv8rH6NkeDmsb9YnScfcUbtxk7qUtHPWo7rlesnHb
+                TmTMHQfAuo/FHxvpHhnR08zVvEd9Bpdmp6edO6xJn0AZgSewya/db/h3J8Mf+gXcf99r/wDE18X/APBE
+                L9h651/xp/wurxJaNFpeliS18LRSoR9suGUxzXg/2I1LxIeQzPIePLUt+pFfsXCOUqOEdevH47Wv2XX5
+                /lY/l/6QXiRVq5zSynKK7isMpKbi2r1JWvHTfkUUvKTkt0wr48/a2/4Jnr4tu7rxB8OTa2d9MxluNDlY
+                RW8zHkm3fpGxP8DfISeGQDB+w6K9niDhvAZzh/q+PhdLVNaSi+6fTzWz6pn8+8O8TZhkeJ+tZfPlfVPW
+                Ml2kuv4NdGj8T/ir8O9e+FesNY+JtF1LQbrcQqXsDRCXB5KMflkH+0hI968/1VlPPGPX8q/cD4/f8kg1
+                z/r3/qK/Hbx//wAlVf8A66n+dfz9xNwXDI68IU6rnGe11ZrXq09fuR/YXhn4iVOIqFSVWgqcqe9pXT0v
+                omrr72eZ6F4P1f4ja8ul+HdJ1PXtTk5W0021e6mI9dkYJx7ngV9n/scf8EUNS8Sara+IvjHt03S4WEsX
+                hm2nD3F5znF1Mh2xpwP3cZZmDcvHgqftT9hf/k3/AE//AK6N/wCgrXsVfqnDXAuEpU4YrESdRtJpWste
+                6u7/AH27o/L+OvHrOZTq5XlUFh0m4uafNN20912io38k5LpJMr6RpFroGlWthYWtvZWNlEkFvbwRiOKC
+                NQFVEVcBVUAAADAAxViiiv0rbRH83Sk5O73P/9k=
+</property>
+        </structure>
+    </list-property>
+</report>
