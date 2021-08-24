@@ -1518,7 +1518,7 @@ $(window.parent.document.body).find(".popup_content").click ( function () { debu
                                     <property name="gadgetType">viewer</property>
                                     <property name="externalContentRef">
                                         <external-element-ref>
-                                            <property name="sourceFile">/Applications/EnCase Data Risk/Report Designs/Encryption.rptdesign</property>
+                                            <property name="sourceFile">/Applications/EnCaseDataRisk/Report Designs/Encryption.rptdesign</property>
                                         </external-element-ref>
                                     </property>
                                     <property name="paramSettings">
