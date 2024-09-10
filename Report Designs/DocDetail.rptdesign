@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
-    <property name="createdBy">Eclipse BIRT Designer Version 4.8.0.v201905290745</property>
+    <property name="createdBy">Eclipse BIRT Designer Version 4.11.0.v202101151752</property>
     <property name="units">in</property>
     <method name="clientInitialize"><![CDATA[//this.getViewer().disableIV();]]></method>
     <property name="theme">ThemesReportItems31.Modern</property>
@@ -123,6 +123,42 @@ var uiOptions = this.getViewer().getUIOptions();
         </simple-master-page>
     </page-setup>
     <body>
+        <text id="4159">
+            <property name="contentType">html</property>
+            <text-property name="content"><![CDATA[<script>
+var myCSS = '';
+myCSS +=  '<style type="text/css">';
+myCSS +=  '          .actuate-selector-panel .actuate-selector-list .actuate-list-item  {';
+myCSS +=  '                         font-size:12px !important;';
+myCSS +=  '         }';
+myCSS +=  '          .actuate-widget-panel-header.actuate-unselectable {';
+myCSS +=  '                          padding:5px 0 0 0';
+myCSS +=  '          }';
+//myCSS +=  '      .actuate-widget-panel-tr{';
+//myCSS +=  '                      height:35px';
+//myCSS +=  '      }';
+myCSS +=  '          .actuate-selector-panel-header .actuate-widget-tool {';
+myCSS +=  '                         font-size:12px !important;';
+myCSS +=  '          }';
+
+myCSS +=  ' .popup_close { right: 3px; position: absolute; top: 0; opacity: 0.5; font-size: 12px; font-weight: 800; color: #111;} ';
+myCSS +=  ' .popup_content {  display: none; position: absolute; top: 15%; left: 15%; width: 1200px; height: 750px; padding: 10px; border: 5px solid #B0B1BA; background-color: #e8e8e8; z-index:1002; overflow: scroll;}';
+
+myCSS +=  '</style>';
+
+$(window.parent.document.head).append(myCSS);
+$(window.parent.document).find(".actuate-widget-panel-tr").not(":eq(0)").css({"height": "35px"});
+
+$(window.parent.document).find(".actuate-widget-panel-header-text").filter(function() { return ($(this).text() === 'Current Selections') }).css({"color": "rgb(99, 99, 99)"}).css({"font-weight": "bold"}).css({"font-size": "10pt"});
+
+//debugger;
+$(window.parent.document.body).append ("<div id='popupDetail' class='popup_content'><span id='popupClose' class='popup_close' >&amp;#10006;</span></div></div>");
+debugger;
+
+$(window.parent.document.body).find(".popup_content").click ( function () { debugger; $(window.parent.document.body).find(".popup_content").hide(); $(window.parent.document.body).find(".popup_content").find("iframe").remove(); $(window.parent.document.body).find(".popupClose").hide(); }  );
+
+</script>]]></text-property>
+        </text>
         <table id="4100">
             <list-property name="userProperties">
                 <structure>
@@ -306,7 +342,9 @@ if (window.location.href.indexOf ("apps") > 0) isEnterprise = true;
 
 if ( isEnterprise ) 
 {
-   $("#popupDetail").html(myHTML + "<iframe frameBorder=0 scrolling=yes width=900px height=450px src='/iportal/executereport.do?__locale=en_US&amp;__userenv=null&amp;__vp=Default%20Volume&amp;volume=Default%20Volume&amp;closex=true&amp;__executableName=%2FApplications%2FEnCase%20Data%20Risk%2FReport%20Designs%2FDocumentDetail.rptdesign&amp;__requesttype=immediate&amp;invokesubmit=true&amp;__format=HTML&amp;DocumentID="+docID+"'></iframe>"); 
+   //$("#popupDetail").html(myHTML + "<iframe frameBorder=0 scrolling=yes width=900px height=450px src='/iportal/executereport.do?__locale=en_US&amp;__userenv=null&amp;__vp=Default%20Volume&amp;volume=Default%20Volume&amp;closex=true&amp;__executableName=%2FApplications%2FEnCase%20Data%20Risk%2FReport%20Designs%2FDocumentDetail.rptdesign&amp;__requesttype=immediate&amp;invokesubmit=true&amp;__format=HTML&amp;DocumentID="+docID+"'></iframe>"); 
+   $("#popupDetail").html(myHTML + "<iframe frameBorder=0 scrolling=yes width=900px height=450px src='/iportal/executereport.do?__requesttype=immediate&amp;__executablename=%2fApplications%2fEncaseDataRisk%2fReport%20Designs%2fDocumentDetail%2erptdesign&amp;__vp=enterprise&amp;volume=RGVmYXVsdCBWb2x1bWU%3d%3a%3aRGVmYXVsdCBWb2x1bWU%3d&amp;showBanner=false&amp;showBreadCrumb=false&amp;invokesubmit=true&amp;__format=HTML&amp;DocumentID="+docID+"'></iframe>"); 
+   
 }
 else {     // 'Workgroup' in the Designer
    $("#popupDetail").html(myHTML + "<iframe frameBorder=0 scrolling=yes width=900px height=450px src='/iportal/frameset?__report=C%3a%2fUsers%2favishakc%2fworkspace%2fEnCase%20Data%20Risk%2fDashboards%2f%2e%2e%2fReport%20Designs%2fDocumentDetail%2erptdesign&amp;amp;invokesubmit=true&amp;amp;__requesttype=immediate&amp;amp;&amp;amp;invokesubmit=true&amp;amp;__requesttype=immediate&amp;amp;__format=HTML&amp;amp;DocumentID="+docID+"'></iframe>");
